@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
 
-  imports = [ ./env.nix ];
+  imports = [ ];
   environment.systemPackages = with pkgs; [ p2pool xmrig ];
 
   services.monero = {
