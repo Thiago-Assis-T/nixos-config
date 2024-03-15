@@ -8,6 +8,7 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/powermanagement.nix
+    ./modules/monero/default.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
