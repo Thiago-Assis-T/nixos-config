@@ -24,7 +24,7 @@
     "hosts": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-Gl4FX22hYD/UM6SP+mdrs+/Xnp/DJlBGH+xQgybT03s=",
+        "narHash": "sha256-u6xauKqd9ir4ajwqtqzFXZF9EQOVnwrD2u19UFXv58s=",
         "type": "file",
         "url": "http://sbc.io/hosts/alternates/fakenews-gambling-porn/hosts"
       },

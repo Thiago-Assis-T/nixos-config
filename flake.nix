@@ -25,7 +25,7 @@
         inherit system;
         config = {
           allowUnfree = true;
-          permittedInsecurePackages = [ "nix-2.15.3" ];
+          permittedInsecurePackages = ["electron-19.1.9" "nix-2.15.3" ];
         };
       };
 
