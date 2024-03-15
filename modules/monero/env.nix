@@ -1,0 +1,6 @@
+{ config, ... }:
+{
+environment.variables = {
+  
+};
+}
