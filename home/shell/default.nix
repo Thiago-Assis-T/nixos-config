@@ -1,5 +1,5 @@
 { pkgs, lib, ... }: {
-  home.packages = with pkgs; [ fd ];
+  home.packages = with pkgs; [ bat fd ];
   programs = {
     bash = {
       enable = true;
