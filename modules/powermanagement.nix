@@ -1,7 +1,9 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
+
+  environment.systemPackages = with pkgs; [ ];
   powerManagement = {
     enable = true;
-    #powertop.enable = true;
+    powertop.enable = false;
     cpuFreqGovernor = "performance";
   };
   services = {
@@ -10,11 +12,11 @@
       settings = {
         battery = {
           governor = "performance";
-          turbo = "auto";
+          turbo = "always";
         };
         charger = {
           governor = "performance";
-          turbo = "auto";
+          turbo = "always";
         };
       };
     };

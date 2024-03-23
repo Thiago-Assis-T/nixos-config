@@ -3,6 +3,11 @@
 
   inputs = {
 
+    dwl-source = {
+      url = "https://codeberg.org/dwl/dwl.git";
+      flake = false;
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
 
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -18,31 +23,26 @@
     };
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, unstable, hosts, ... }:
+  outputs =
+    inputs@{ self, home-manager, nixpkgs, unstable, hosts, dwl-source, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config = {
-          allowUnfree = true;
-          permittedInsecurePackages = ["electron-19.1.9" "nix-2.15.3" ];
-        };
+        config = { allowUnfree = true; };
       };
 
       unstable-pkgs = import unstable {
         inherit system;
-        config = {
-          allowUnfree = true;
-          permittedInsecurePackages = [ "nix-2.15.3" ];
-        };
+        config = { allowUnfree = true; };
       };
 
     in {
 
       nixosConfigurations = {
-       
+
         ThiagoDesktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit hosts system pkgs unstable-pkgs; };
+          specialArgs = { inherit dwl-source hosts system pkgs unstable-pkgs; };
 
           modules = [
             home-manager.nixosModules.home-manager

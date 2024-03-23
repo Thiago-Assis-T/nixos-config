@@ -14,7 +14,11 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.loader.systemd-boot.memtest86.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
+  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.lightdm.enableGnomeKeyring = true;
   programs = {
     gamemode = {
       enable = true;
@@ -44,8 +48,10 @@
   networking.hostFiles = [ hosts ];
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable =
-    true; # Easiest to use and most distros use this by default.
+  networking.networkmanager = {
+    enable = true;
+    # wifi.backend = "iwd";
+  };
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -66,8 +72,17 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.cinnamon.enable = true;
+  services.xserver = {
+    displayManager = {
+      lightdm.enable = true;
+      autoLogin = {
+        enable = true;
+        user = "thiago";
+      };
+
+    };
+    desktopManager.cinnamon.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "br";
