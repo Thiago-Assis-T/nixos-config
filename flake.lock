@@ -3,7 +3,7 @@
     "dwl-source": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-KiwxD1HAJdk0W+e/SvuMhyFYlsyVSBV8pp/R2Y4JJAo=",
+        "narHash": "sha256-AmDE3bqa/h68kPUbps1elExqdBv1xUUroGnqCsl5gXs=",
         "type": "file",
         "url": "https://codeberg.org/dwl/dwl.git"
       },

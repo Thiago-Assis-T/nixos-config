@@ -29,7 +29,10 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [ "nix-2.15.3" ];
+        };
       };
 
       unstable-pkgs = import unstable {
