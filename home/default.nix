@@ -10,11 +10,14 @@
 
   programs.dwl.enable = true;
 
+  programs.foot.enable = true;
+  programs.foot.package = unstable-pkgs.foot;
+
   home = {
     username = "thiago";
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
-    packages = with pkgs; [ unstable-pkgs.logseq ];
+    packages = with pkgs; [ wdisplays bemenu unstable-pkgs.logseq ];
   };
 
 }

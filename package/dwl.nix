@@ -2,7 +2,6 @@
 stdenv.mkDerivation (finalAttrs: {
   pname = "dwl";
   version = "0.5";
-
   src = custom-dwl;
 
   nativeBuildInputs = with unstable-pkgs; [
