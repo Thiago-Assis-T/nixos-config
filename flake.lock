@@ -1,17 +1,5 @@
 {
   "nodes": {
-    "dwl-source": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-AmDE3bqa/h68kPUbps1elExqdBv1xUUroGnqCsl5gXs=",
-        "type": "file",
-        "url": "https://codeberg.org/dwl/dwl.git"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://codeberg.org/dwl/dwl.git"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -36,7 +24,7 @@
     "hosts": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-DoTIDy2ZwJbG6FlRE5lXyW/0/4eSlC1Ew8VGlw7sBz8=",
+        "narHash": "sha256-VTRukoDuLdotGfGD7ou21/e9rvMFyRYb0/TIMM8Pg48=",
         "type": "file",
         "url": "http://sbc.io/hosts/alternates/fakenews-gambling-porn/hosts"
       },
@@ -63,7 +51,6 @@
     },
     "root": {
       "inputs": {
-        "dwl-source": "dwl-source",
         "home-manager": "home-manager",
         "hosts": "hosts",
         "nixpkgs": "nixpkgs",
@@ -72,11 +59,11 @@
     },
     "unstable": {
       "locked": {
-        "lastModified": 1711001935,
-        "narHash": "sha256-URtGpHue7HHZK0mrHnSf8wJ6OmMKYSsoLmJybrOLFSQ=",
+        "lastModified": 1711163522,
+        "narHash": "sha256-YN/Ciidm+A0fmJPWlHBGvVkcarYWSC+s3NTPk/P+q3c=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "20f77aa09916374aa3141cbc605c955626762c9a",
+        "rev": "44d0940ea560dee511026a53f0e2e2cde489b4d4",
         "type": "github"
       },
       "original": {
