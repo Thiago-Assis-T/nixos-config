@@ -1,12 +1,14 @@
 { unstable-pkgs, inputs, config, pkgs, lib, ... }:
 
 {
-  imports = [ ./shell ./git ./nvim ./wezterm ];
+  imports = [ ./programs/dwl.nix ./shell ./git ./nvim ./wezterm ];
   services.gnome-keyring.enable = true;
   xdg = {
     enable = true;
     mimeApps = { enable = true; };
   };
+
+  programs.dwl.enable = true;
 
   home = {
     username = "thiago";

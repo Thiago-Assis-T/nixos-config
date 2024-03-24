@@ -3,6 +3,11 @@
 
   inputs = {
 
+    custom-dwl = {
+      url = "git+https://codeberg.org/ThiagoAssis/dwl?ref=personalDwl";
+      flake = true;
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
 
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
