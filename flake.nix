@@ -5,7 +5,7 @@
 
     custom-dwl = {
       url = "git+https://codeberg.org/ThiagoAssis/dwl?ref=personalDwl";
-      flake = true;
+      flake = false;
     };
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
@@ -23,7 +23,8 @@
     };
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, unstable, hosts, ... }:
+  outputs =
+    inputs@{ self, home-manager, nixpkgs, unstable, hosts, custom-dwl, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -44,7 +45,7 @@
       nixosConfigurations = {
 
         ThiagoDesktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit hosts system pkgs unstable-pkgs; };
+          specialArgs = { inherit hosts system pkgs unstable-pkgs custom-dwl; };
 
           modules = [
             home-manager.nixosModules.home-manager
@@ -54,7 +55,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit inputs system pkgs unstable-pkgs;
+                  inherit inputs system pkgs unstable-pkgs custom-dwl;
                 };
                 users.thiago = import ./home;
               };

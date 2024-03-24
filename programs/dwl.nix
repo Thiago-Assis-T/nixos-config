@@ -1,22 +1,21 @@
-{ config, pkgs, lib, custom-dwl, ... }:
-with lib;
+{ config, unstable-pkgs, pkgs, lib, custom-dwl, ... }:
 let
   cfg = config.programs.dwl;
-  dwlPackage = import ../package/dwl.nix {
-    inherit pkgs;
+  dwlPackage = pkgs.callPackage (import ../package/dwl.nix) {
+    inherit unstable-pkgs;
     inherit (cfg)
     ;
     inherit custom-dwl;
   };
 in {
   options.programs.dwl = {
-    enable = mkEnableOption "dwl";
-    package = mkOption {
-      type = types.package;
+    enable = lib.mkEnableOption "dwl";
+    package = lib.mkOption {
+      type = lib.types.package;
       default = dwlPackage;
     };
   };
 
-  config = mkIf cfg.enable { home.packages = [ cfg.package ]; };
+  config = lib.mkIf cfg.enable { home.packages = [ cfg.package ]; };
 
 }

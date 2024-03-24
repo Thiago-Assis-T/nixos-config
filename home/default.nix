@@ -1,7 +1,7 @@
 { unstable-pkgs, inputs, config, pkgs, lib, ... }:
 
 {
-  imports = [ ./programs/dwl.nix ./shell ./git ./nvim ./wezterm ];
+  imports = [ ../programs/dwl.nix ./shell ./git ./nvim ./wezterm ];
   services.gnome-keyring.enable = true;
   xdg = {
     enable = true;
