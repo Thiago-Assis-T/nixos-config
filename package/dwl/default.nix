@@ -29,7 +29,6 @@ stdenv.mkDerivation (finalAttrs: {
   patches = [
     ./patches/autostart.patch
     ./patches/ipc.patch
-    ./patches/regions.patch
   ];
 
   # postPatch = let configFile = ./config.h;
