@@ -27,6 +27,8 @@ stdenv.mkDerivation (finalAttrs: {
   outputs = [ "out" "man" ];
 
   patches = [
+    ./patches/autostart.patch
+    ./patches/ipc.patch
 
   ];
 
