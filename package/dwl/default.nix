@@ -26,15 +26,12 @@ stdenv.mkDerivation (finalAttrs: {
 
   outputs = [ "out" "man" ];
 
-  patches = [
-    ./patches/autostart.patch
-    ./patches/ipc.patch
-  ];
+  patches = [ ./patches/autostart.patch ./patches/ipc.patch ];
 
-  # postPatch = let configFile = ./config.h;
-  #in ''
-  #  cp ${configFile} config.def.h;
-  #'';
+  postPatch = let configFile = ./config.h;
+  in ''
+    cp ${configFile} config.def.h;
+  '';
 
   makeFlags = [
     "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config"
