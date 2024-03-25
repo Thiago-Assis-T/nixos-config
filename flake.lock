@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "custom-dwl": {
+    "dwl": {
       "flake": false,
       "locked": {
         "lastModified": 1710180073,
@@ -68,7 +68,7 @@
     },
     "root": {
       "inputs": {
-        "custom-dwl": "custom-dwl",
+        "dwl": "dwl",
         "home-manager": "home-manager",
         "hosts": "hosts",
         "nixpkgs": "nixpkgs",

@@ -21,7 +21,7 @@
       wdisplays
       wlr-randr
       wbg
-      bemenu
+      dmenu-wayland
       unstable-pkgs.logseq
     ];
     sessionVariables = { MOZ_ENABLE_WAYLAND = 1; };

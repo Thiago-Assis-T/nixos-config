@@ -1,8 +1,8 @@
-{ unstable-pkgs, custom-dwl, lib, stdenv, ... }:
+{ unstable-pkgs, dwl, lib, stdenv, ... }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "dwl";
   version = "0.5";
-  src = custom-dwl;
+  src = dwl;
 
   nativeBuildInputs = with unstable-pkgs; [
     installShellFiles
@@ -26,12 +26,13 @@ stdenv.mkDerivation (finalAttrs: {
 
   outputs = [ "out" "man" ];
 
-  patches = [ ./patches/autostart.patch ./patches/ipc.patch ];
+  patches =
+    [ ./patches/autostart.patch ./patches/ipc.patch ./patches/bar.patch ];
 
-  postPatch = let configFile = ./config.h;
-  in ''
-    cp ${configFile} config.def.h;
-  '';
+  #postPatch = let configFile = ./config.h;
+  #in ''
+  #   cp ${configFile} config.def.h;
+  #'';
 
   makeFlags = [
     "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config"

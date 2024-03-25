@@ -1,11 +1,11 @@
-{ config, unstable-pkgs, pkgs, lib, custom-dwl, ... }:
+{ config, unstable-pkgs, pkgs, lib, dwl, ... }:
 let
   cfg = config.programs.dwl;
   dwlPackage = pkgs.callPackage (import ../package/dwl) {
     inherit unstable-pkgs;
     inherit (cfg)
     ;
-    inherit custom-dwl;
+    inherit dwl;
   };
 in {
   options.programs.dwl = {
