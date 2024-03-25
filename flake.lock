@@ -3,18 +3,18 @@
     "custom-dwl": {
       "flake": false,
       "locked": {
-        "lastModified": 1711317712,
-        "narHash": "sha256-TyS96g5YQgMmE5OuQFHyKS9MSu9C5HliUV6WSAOG/Pg=",
-        "ref": "personalDwl",
-        "rev": "7849e4ed903934d893f0947b8b661a6621f35a0c",
-        "revCount": 1160,
+        "lastModified": 1710180073,
+        "narHash": "sha256-Dd2466wNfR/foZsBh8r0l/Q+lbr7zIFFumnQr2IVKb0=",
+        "ref": "main",
+        "rev": "2b171fd5010379a8674afa012245fea5a590e472",
+        "revCount": 1155,
         "type": "git",
-        "url": "https://codeberg.org/ThiagoAssis/dwl"
+        "url": "https://codeberg.org/dwl/dwl"
       },
       "original": {
-        "ref": "personalDwl",
+        "ref": "main",
         "type": "git",
-        "url": "https://codeberg.org/ThiagoAssis/dwl"
+        "url": "https://codeberg.org/dwl/dwl"
       }
     },
     "home-manager": {

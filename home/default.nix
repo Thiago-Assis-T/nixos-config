@@ -17,7 +17,13 @@
     username = "thiago";
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
-    packages = with pkgs; [ wdisplays bemenu unstable-pkgs.logseq ];
+    packages = with pkgs; [
+      wdisplays
+      wlr-randr
+      wbg
+      bemenu
+      unstable-pkgs.logseq
+    ];
     sessionVariables = { MOZ_ENABLE_WAYLAND = 1; };
   };
 

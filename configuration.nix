@@ -19,16 +19,6 @@
   boot.kernelParams = [ "usbcore.autosuspend=-1" ];
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.lightdm.enableGnomeKeyring = true;
-  programs = {
-    gamemode = {
-      enable = true;
-      enableRenice = true;
-    };
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-    };
-  };
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -44,13 +34,24 @@
     fileSystems = [ "/" ];
   };
 
+  services.pipewire = {
+    enable = true;
+    audio.enable = true;
+    pulse.enable = true;
+    jack.enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
+  };
+
   networking.hostName = "ThiagoDesktop"; # Define your hostname.
   networking.hostFiles = [ hosts ];
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager = {
     enable = true;
-    # wifi.backend = "iwd";
+    wifi.backend = "iwd";
   };
 
   # Set your time zone.
@@ -68,21 +69,33 @@
     # keyMap = "br";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver = {
-    displayManager = {
-      lightdm.enable = true;
-      autoLogin = {
-        enable = true;
+  services.greetd = {
+    enable = true;
+    restart = true;
+    package = with pkgs; greetd.tuigreet;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd dwl";
         user = "thiago";
       };
 
     };
-    desktopManager.cinnamon.enable = true;
+
   };
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  #services.xserver = {
+  #  displayManager = {
+  #    lightdm.enable = true;
+  #    autoLogin = {
+  #      enable = true;
+  #      user = "thiago";
+  #    };
+  #  };
+  #desktopManager.cinnamon.enable = true;
+  # };
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "br";
@@ -101,7 +114,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.thiago = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "audio" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [ geekbench firefox ];
   };
 

@@ -1,7 +1,7 @@
 { config, unstable-pkgs, pkgs, lib, custom-dwl, ... }:
 let
   cfg = config.programs.dwl;
-  dwlPackage = pkgs.callPackage (import ../package/dwl.nix) {
+  dwlPackage = pkgs.callPackage (import ../package/dwl) {
     inherit unstable-pkgs;
     inherit (cfg)
     ;

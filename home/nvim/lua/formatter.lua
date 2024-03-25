@@ -23,12 +23,6 @@ require("formatter").setup({
 			require("formatter.filetypes.go").gofumpt,
 			require("formatter.filetypes.go").goimports,
 		},
-		cpp = {
-			require("formatter.filetypes.cpp").clangformat,
-		},
-		c = {
-			require("formatter.filetypes.c").clangformat,
-		},
 		lua = {
 			require("formatter.filetypes.lua").stylua,
 		},
