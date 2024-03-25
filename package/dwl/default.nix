@@ -11,6 +11,10 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs = with unstable-pkgs; [
+    # for the bar:
+    fcft
+    libdrm
+    #for dwl:
     libinput
     wayland
     wlroots
@@ -26,13 +30,15 @@ stdenv.mkDerivation (finalAttrs: {
 
   outputs = [ "out" "man" ];
 
-  patches =
-    [ ./patches/autostart.patch ./patches/ipc.patch ./patches/bar.patch ];
+  patches = [
+    ./patches/autostart.patch
+    ./patches/bar.patch
+  ];
 
-  #postPatch = let configFile = ./config.h;
-  #in ''
-  #   cp ${configFile} config.def.h;
-  #'';
+  postPatch = let configFile = ./config.h;
+  in ''
+    cp ${configFile} config.def.h;
+  '';
 
   makeFlags = [
     "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config"
