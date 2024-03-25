@@ -94,10 +94,6 @@
       golangci-lint
       lua-language-server
       stylua
-      clang
-      clangStdenv
-      libclang
-      clang-tools
       marksman
       ripgrep
       fd
