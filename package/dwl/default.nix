@@ -29,6 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
   patches = [
     ./patches/autostart.patch
     ./patches/ipc.patch
+    ./patches/regions.patch
 
   ];
 
