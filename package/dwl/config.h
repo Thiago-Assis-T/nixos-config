@@ -23,7 +23,7 @@ static pixman_color_t normbarbg = { 0x2222, 0x2222, 0x2222, 0xffff };
 static pixman_color_t selbarfg  = { 0xeeee, 0xeeee, 0xeeee, 0xffff };
 static pixman_color_t selbarbg  = { 0x0000, 0x5555, 0x7777, 0xffff };
 /* tagging - TAGCOUNT must be no greater than 31 */
-static char *tags[] = { "󰈹", "", "󰈙", "", "󰍦", "", "󰎈" };
+static char *tags[] = { "󰈹", "", "󰈙", "", "󰍦", "󰅩", "", "󰎈" };
 
 /* logging */
 static int log_level = WLR_ERROR;
