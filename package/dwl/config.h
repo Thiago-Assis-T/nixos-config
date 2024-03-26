@@ -16,14 +16,14 @@ static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You ca
 /* bar */
 static const int showbar        = 1; /* 0 means no bar */
 static const int topbar         = 1; /* 0 means bottom bar */
-static const char *fonts[]      = {"JetBrainsMono:size=10"};
+static const char *fonts[]      = {"JetBrainsMono:size=9"};
 static const char *fontattrs    = "dpi=96";
 static pixman_color_t normbarfg = { 0xbbbb, 0xbbbb, 0xbbbb, 0xffff };
 static pixman_color_t normbarbg = { 0x2222, 0x2222, 0x2222, 0xffff };
 static pixman_color_t selbarfg  = { 0xeeee, 0xeeee, 0xeeee, 0xffff };
 static pixman_color_t selbarbg  = { 0x0000, 0x5555, 0x7777, 0xffff };
 /* tagging - TAGCOUNT must be no greater than 31 */
-static char *tags[] = { "󰈹", "", "󰈙", "", "󰍦", "󰎈" };
+static char *tags[] = { "󰈹", "", "󰈙", "", "󰍦", "", "󰎈" };
 
 /* logging */
 static int log_level = WLR_ERROR;

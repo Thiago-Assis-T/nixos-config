@@ -30,7 +30,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   outputs = [ "out" "man" ];
 
-  patches = [ ./patches/autostart.patch ./patches/bar.patch ];
+  patches =
+    [./patches/bar.patch ./patches/autostart.patch ];
 
   postPatch = let configFile = ./config.h;
   in ''

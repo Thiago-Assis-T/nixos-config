@@ -11,7 +11,7 @@
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "snd-mixer-oss" "k10temp" ];
+  boot.kernelModules = [ "k10temp" ];
   boot.extraModulePackages = [ ];
   boot.kernelPackages = unstable-pkgs.linuxPackages_zen;
 

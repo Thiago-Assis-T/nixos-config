@@ -79,27 +79,26 @@
     "slstatus-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1688496438,
-        "narHash": "sha256-cFah6EgApslLSlJaOy/5W9ZV9Z1lzfKye/rRh9Om3T4=",
-        "ref": "master",
-        "rev": "f68f49273e70b3767b30c549dda04ddd4d25fc91",
-        "revCount": 604,
+        "lastModified": 1711482984,
+        "narHash": "sha256-9bd0tNI24jJWi2u0XAcPo9GXGxc+QdJxhTZTgeg4cDA=",
+        "ref": "refs/heads/main",
+        "rev": "300c258c8bde88cfe678648f2fbce75304cb19f8",
+        "revCount": 11,
         "type": "git",
-        "url": "https://git.suckless.org/slstatus"
+        "url": "https://codeberg.org/ThiagoAssis/slstatus.git"
       },
       "original": {
-        "ref": "master",
         "type": "git",
-        "url": "https://git.suckless.org/slstatus"
+        "url": "https://codeberg.org/ThiagoAssis/slstatus.git"
       }
     },
     "unstable": {
       "locked": {
-        "lastModified": 1711333969,
-        "narHash": "sha256-5PiWGn10DQjMZee5NXzeA6ccsv60iLu+Xtw+mfvkUAs=",
+        "lastModified": 1711437523,
+        "narHash": "sha256-lzKaFdlecRjS580jFQfY0TeOQknROUfhUJKpVdXEQGY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "57e6b3a9e4ebec5aa121188301f04a6b8c354c9b",
+        "rev": "034253ed29c57858b532c2dffb205aa31651b819",
         "type": "github"
       },
       "original": {

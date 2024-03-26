@@ -9,7 +9,7 @@
     };
 
     slstatus-src = {
-      url = "git+https://git.suckless.org/slstatus?ref=master";
+      url = "git+https://codeberg.org/ThiagoAssis/slstatus.git";
       flake = false;
     };
 
