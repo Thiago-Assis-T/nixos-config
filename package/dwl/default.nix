@@ -1,8 +1,8 @@
-{ unstable-pkgs, dwl, lib, stdenv, ... }:
+{ unstable-pkgs, dwl-src, lib, stdenv, ... }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "dwl";
   version = "0.5";
-  src = dwl;
+  src = dwl-src;
 
   nativeBuildInputs = with unstable-pkgs; [
     installShellFiles
@@ -30,10 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   outputs = [ "out" "man" ];
 
-  patches = [
-    ./patches/autostart.patch
-    ./patches/bar.patch
-  ];
+  patches = [ ./patches/autostart.patch ./patches/bar.patch ];
 
   postPatch = let configFile = ./config.h;
   in ''

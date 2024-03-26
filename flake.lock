@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "dwl": {
+    "dwl-src": {
       "flake": false,
       "locked": {
         "lastModified": 1710180073,
@@ -68,15 +68,15 @@
     },
     "root": {
       "inputs": {
-        "dwl": "dwl",
+        "dwl-src": "dwl-src",
         "home-manager": "home-manager",
         "hosts": "hosts",
         "nixpkgs": "nixpkgs",
-        "slstatus": "slstatus",
+        "slstatus-src": "slstatus-src",
         "unstable": "unstable"
       }
     },
-    "slstatus": {
+    "slstatus-src": {
       "flake": false,
       "locked": {
         "lastModified": 1688496438,

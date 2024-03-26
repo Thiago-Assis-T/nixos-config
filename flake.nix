@@ -3,12 +3,12 @@
 
   inputs = {
 
-    dwl = {
+    dwl-src = {
       url = "git+https://codeberg.org/dwl/dwl?ref=main";
       flake = false;
     };
 
-    slstatus = {
+    slstatus-src = {
       url = "git+https://git.suckless.org/slstatus?ref=master";
       flake = false;
     };
@@ -28,7 +28,8 @@
     };
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, unstable, hosts, dwl, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, unstable, hosts, dwl-src
+    , slstatus-src, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -49,7 +50,9 @@
       nixosConfigurations = {
 
         ThiagoDesktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit hosts system pkgs unstable-pkgs dwl; };
+          specialArgs = {
+            inherit hosts system pkgs unstable-pkgs dwl-src slstatus-src;
+          };
 
           modules = [
             home-manager.nixosModules.home-manager
@@ -59,7 +62,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit inputs system pkgs unstable-pkgs dwl;
+                  inherit inputs system pkgs unstable-pkgs dwl-src slstatus-src;
                 };
                 users.thiago = import ./home;
               };

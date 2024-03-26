@@ -1,4 +1,4 @@
-{ unstable-pkgs, inputs, config, pkgs, lib, ... }:
+{ unstable-pkgs, inputs, config, pkgs, ... }:
 
 {
   imports = [ ../programs/dwl.nix ./foot ./shell ./git ./nvim ./wezterm ];
@@ -15,7 +15,7 @@
     username = "thiago";
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
-    packages = with pkgs; [neofetch slstatus wbg dmenu-wayland unstable-pkgs.logseq ];
+    packages = with pkgs; [ neofetch wbg dmenu-wayland ];
     sessionVariables = { MOZ_ENABLE_WAYLAND = 1; };
   };
 

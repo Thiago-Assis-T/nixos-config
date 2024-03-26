@@ -1,20 +1,20 @@
-{ config, pkgs, stdenv, slstatus, ... }:
+{ pkgs, stdenv, lib, slstatus-src, ... }:
 stdenv.mkDerivation rec {
   pname = "slstatus";
   version = "1.0";
 
-  src = slstatus;
+  src = slstatus-src;
 
-  nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ libX11 libXau libXdmcp ];
+  preBuild = let configFile = ./config.h;
+  in ''
+    cp ${configFile} config.def.h
+    makeFlagsArray+=(LDLIBS="-lX11 -lxcb -lXau -lXdmcp" CC=$CC)
+  '';
+
+  nativeBuildInputs = with pkgs; [ pkg-config ];
+  buildInputs = with pkgs.xorg; [ libX11 libXau libXdmcp ];
 
   installFlags = [ "PREFIX=$(out)" ];
-
-
-  postPatch = let configFile = ./config.h;
-  in ''
-    cp ${configFile} config.def.h;
-  '';
 
   meta = with lib; {
     homepage = "https://tools.suckless.org/slstatus/";
@@ -23,5 +23,6 @@ stdenv.mkDerivation rec {
     license = licenses.isc;
     maintainers = with maintainers; [ oxzi ];
     platforms = platforms.linux;
+    mainProgram = "slstatus";
   };
 }
