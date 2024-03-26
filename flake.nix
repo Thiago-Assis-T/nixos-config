@@ -8,9 +8,14 @@
       flake = false;
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    slstatus = {
+      url = "git+https://git.suckless.org/slstatus?ref=master";
+      flake = false;
+    };
 
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11-small";
+
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     hosts = {
       url = "file+http://sbc.io/hosts/alternates/fakenews-gambling-porn/hosts";

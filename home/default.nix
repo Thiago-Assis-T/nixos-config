@@ -15,7 +15,7 @@
     username = "thiago";
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
-    packages = with pkgs; [ slstatus wbg dmenu-wayland unstable-pkgs.logseq ];
+    packages = with pkgs; [neofetch slstatus wbg dmenu-wayland unstable-pkgs.logseq ];
     sessionVariables = { MOZ_ENABLE_WAYLAND = 1; };
   };
 

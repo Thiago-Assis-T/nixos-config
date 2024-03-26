@@ -34,6 +34,7 @@
     fileSystems = [ "/" ];
   };
 
+  sound.enable = true;
   services.pipewire = {
     enable = true;
     audio.enable = true;
@@ -44,6 +45,8 @@
       support32Bit = true;
     };
   };
+  services.jack.alsa.enable = true;
+  services.jack.alsa.support32Bit = true;
 
   networking.hostName = "ThiagoDesktop"; # Define your hostname.
   networking.hostFiles = [ hosts ];
