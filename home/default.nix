@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, pkgs, ... }:
+{ pkgs, inputs, config, ... }:
 
 {
   imports = [ ./foot ./shell ./git ./nvim ./wezterm ];
