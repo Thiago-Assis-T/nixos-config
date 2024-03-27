@@ -4,7 +4,7 @@
   inputs = {
 
     dwl-src = {
-      url = "git+https://codeberg.org/dwl/dwl?ref=main";
+      url = "git+https://codeberg.org/ThiagoAssis/dwl?ref=personalMain";
       flake = false;
     };
 

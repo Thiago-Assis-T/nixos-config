@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, hosts, ... }:
+{ config, lib, pkgs, hosts, dwl-src, unstable-pkgs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -10,6 +10,7 @@
     ./modules/powermanagement.nix
     ./modules/monero/default.nix
     ./package/slstatus/default.nix
+    ./package/dwl/default.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
