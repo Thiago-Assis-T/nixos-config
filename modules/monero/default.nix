@@ -1,6 +1,5 @@
-{ config, pkgs, unstable-pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
-  # wallet: 43974ZxwbJvMq8BpXJTqHhMjXsUKhDQJEYfa1YFMdsWf2onzSQwAwccPtYvmUxdNYxL18TEL6qVf7gLxUdH9FxYvTA3G3eB
   wallet =
     "43974ZxwbJvMq8BpXJTqHhMjXsUKhDQJEYfa1YFMdsWf2onzSQwAwccPtYvmUxdNYxL18TEL6qVf7gLxUdH9FxYvTA3G3eB";
 in {
@@ -12,10 +11,7 @@ in {
     kernelParams = [ "default_hugepagesz=2M" "hugepagesz=1G" "hugepages=3" ];
   };
 
-  environment.systemPackages = with pkgs; [
-    unstable-pkgs.p2pool
-    unstable-pkgs.xmrig
-  ];
+  environment.systemPackages = with pkgs; [ pkgs.p2pool pkgs.xmrig ];
 
   systemd.services.p2pool = {
     wantedBy = [ "multi-user.target" ];
@@ -26,7 +22,7 @@ in {
       Type = "simple";
       User = "monero";
       ExecStart =
-        "${unstable-pkgs.p2pool}/bin/p2pool --host 127.0.0.1 --wallet ${wallet} --mini --loglevel 6 --start-mining 8";
+        "${pkgs.p2pool}/bin/p2pool --host 127.0.0.1 --wallet ${wallet} --mini --loglevel 6 --start-mining 8";
       Restart = "always";
       RestartSec = 5;
     };
@@ -43,7 +39,7 @@ in {
       Type = "simple";
       User = "root";
       ExecStart =
-        "${unstable-pkgs.xmrig}/bin/xmrig -o 127.0.0.1:3333 -S --cpu-no-yield --huge-pages-jit --randomx-1gb-pages --cpu-priority=3 --asm ryzen --pause-on-active=300 --pause-on-battery";
+        "${pkgs.xmrig}/bin/xmrig -o 127.0.0.1:3333 -S --cpu-no-yield --huge-pages-jit --randomx-1gb-pages --cpu-priority=3 --asm ryzen --pause-on-active=300 --pause-on-battery";
       Restart = "always";
       RestartSec = 5;
     };

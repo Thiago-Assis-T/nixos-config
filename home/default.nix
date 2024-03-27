@@ -1,4 +1,4 @@
-{ unstable-pkgs, inputs, config, pkgs, ... }:
+{ pkgs, inputs, config, pkgs, ... }:
 
 {
   imports = [ ./foot ./shell ./git ./nvim ./wezterm ];
@@ -15,7 +15,8 @@
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
     packages = with pkgs; [
-    btop
+      lm_sensors
+      btop
       mpv
       youtube-tui
       neofetch
@@ -23,6 +24,7 @@
       dmenu-wayland
     ];
     sessionVariables = { MOZ_ENABLE_WAYLAND = 1; };
+
   };
 
 }

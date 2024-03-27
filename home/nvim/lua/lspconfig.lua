@@ -68,7 +68,3 @@ lspconfig.yamlls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
-lspconfig.rnix.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})

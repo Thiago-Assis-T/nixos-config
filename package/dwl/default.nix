@@ -1,7 +1,7 @@
-{ unstable-pkgs, dwl-src, lib, stdenv, ... }: {
+{ pkgs, dwl-src, lib, stdenv, ... }: {
   environment.systemPackages = [
-    (unstable-pkgs.dwl.overrideAttrs (_: {
-      buildInputs = with unstable-pkgs; [
+    (pkgs.dwl.overrideAttrs (_: {
+      buildInputs = with pkgs; [
         # for the bar:
         fcft
         libdrm

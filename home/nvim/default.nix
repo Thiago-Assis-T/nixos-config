@@ -84,7 +84,6 @@
       yaml-language-server
       yamlfmt
       yamllint
-      rnix-lsp
       statix
       nixfmt
       gopls

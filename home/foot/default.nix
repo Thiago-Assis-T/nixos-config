@@ -1,7 +1,7 @@
-{ config, unstable-pkgs, ... }: {
+{ config, pkgs, ... }: {
   programs.foot = {
     enable = true;
-    package = unstable-pkgs.foot;
+    package = pkgs.foot;
     settings = {
       main = {
         term = "xterm-256color";

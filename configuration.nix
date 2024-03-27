@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, hosts, dwl-src, unstable-pkgs, ... }:
+{ config, lib, pkgs, hosts, dwl-src, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -53,9 +53,22 @@
     "initcall_blacklist=acpi_cpufreq_init"
     "usbcore.autosuspend=-1"
   ];
-  services.hdapsd.enable = true;
+
+  security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.lightdm.enableGnomeKeyring = true;
+  services.seatd.enable = true;
+  xdg = {
+    autostart.enable = true;
+    sounds.enable = true;
+    portal = {
+      enable = true;
+      wlr.enable = true;
+      xdgOpenUsePortal = true;
+      configPackages = with pkgs; [ xdg-desktop-portal-wlr ];
+    };
+  };
+
+  services.hdapsd.enable = true;
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -120,8 +133,9 @@
   services.xserver.xkb.layout = "br";
   users.users.thiago = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ geekbench firefox ];
+    extraGroups =
+      [ "video" "seat" "wheel" "audio" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [ mate.mate-polkit geekbench firefox ];
   };
 
   networking.firewall.enable = true;

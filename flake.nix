@@ -13,9 +13,7 @@
       flake = false;
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11-small";
-
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     hosts = {
       url = "file+http://sbc.io/hosts/alternates/fakenews-gambling-porn/hosts";
@@ -23,24 +21,16 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, unstable, hosts, dwl-src
-    , slstatus-src, ... }:
+  outputs =
+    inputs@{ self, home-manager, nixpkgs, hosts, dwl-src, slstatus-src, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-          permittedInsecurePackages = [ "nix-2.15.3" ];
-        };
-      };
-
-      unstable-pkgs = import unstable {
         inherit system;
         config = { allowUnfree = true; };
       };
@@ -50,9 +40,7 @@
       nixosConfigurations = {
 
         ThiagoDesktop = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit hosts system pkgs unstable-pkgs dwl-src slstatus-src;
-          };
+          specialArgs = { inherit hosts system pkgs dwl-src slstatus-src; };
 
           modules = [
             home-manager.nixosModules.home-manager
@@ -62,7 +50,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit inputs system pkgs unstable-pkgs dwl-src slstatus-src;
+                  inherit inputs system pkgs dwl-src slstatus-src;
                 };
                 users.thiago = import ./home;
               };

@@ -3,11 +3,11 @@
     "dwl-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1711565682,
-        "narHash": "sha256-wc5X8QN1DNC+okRlOx2RS3l4xsIQPU9MsYbwTSDTJEs=",
+        "lastModified": 1711580060,
+        "narHash": "sha256-fJklJOZEJj/qQYlj/MA33f5+oVopkLKMuDUNPuBj7HM=",
         "ref": "personalMain",
-        "rev": "f97195bc6596ee5acd9d30f608324df1785600d6",
-        "revCount": 1163,
+        "rev": "60d1f0430bccd3682a89f554ab80196b45b3145d",
+        "revCount": 1167,
         "type": "git",
         "url": "https://codeberg.org/ThiagoAssis/dwl"
       },
@@ -24,16 +24,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1710888565,
-        "narHash": "sha256-s9Hi4RHhc6yut4EcYD50sZWRDKsugBJHSbON8KFwoTw=",
+        "lastModified": 1711554349,
+        "narHash": "sha256-RypwcWEIFePBI0Hubfj4chanbM/G2yzJzC6wgz+dmS4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f33900124c23c4eca5831b9b5eb32ea5894375ce",
+        "rev": "179f6acaf7c068c7870542cdae72afec9427a5b0",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-23.11",
+        "ref": "master",
         "repo": "home-manager",
         "type": "github"
       }
@@ -52,48 +52,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1711481231,
-        "narHash": "sha256-J/fW3Xhm3WsJPNd8ksZmfMnol5aOG2qEMDPbOnNNdTQ=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "9d6ddb13cee3cc1192e4430277708c732685f38a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-23.11-small",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "root": {
-      "inputs": {
-        "dwl-src": "dwl-src",
-        "home-manager": "home-manager",
-        "hosts": "hosts",
-        "nixpkgs": "nixpkgs",
-        "slstatus-src": "slstatus-src",
-        "unstable": "unstable"
-      }
-    },
-    "slstatus-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1711500085,
-        "narHash": "sha256-f+c9oHF9SiR95jijJEd2poMJnChTHvu8a13n0W0gkiE=",
-        "ref": "refs/heads/main",
-        "rev": "3e549469f67931610391b7eb19054f6919a08fc7",
-        "revCount": 18,
-        "type": "git",
-        "url": "https://codeberg.org/ThiagoAssis/slstatus.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://codeberg.org/ThiagoAssis/slstatus.git"
-      }
-    },
-    "unstable": {
-      "locked": {
         "lastModified": 1711483428,
         "narHash": "sha256-QFbfFvHiGW/jDwM1pvcqKKwOnCXywUgPoGxdZDmlwKI=",
         "owner": "nixos",
@@ -106,6 +64,31 @@
         "ref": "nixos-unstable-small",
         "repo": "nixpkgs",
         "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "dwl-src": "dwl-src",
+        "home-manager": "home-manager",
+        "hosts": "hosts",
+        "nixpkgs": "nixpkgs",
+        "slstatus-src": "slstatus-src"
+      }
+    },
+    "slstatus-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1711573889,
+        "narHash": "sha256-XfnnwSwycdAkWEJ2Dq827x2U5QEGxX9Kbgm9cbJ2dwY=",
+        "ref": "refs/heads/main",
+        "rev": "d369d11b8f341d9a3e04abb5c2cc2e25e62f4cf4",
+        "revCount": 21,
+        "type": "git",
+        "url": "https://codeberg.org/ThiagoAssis/slstatus.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/ThiagoAssis/slstatus.git"
       }
     }
   },
