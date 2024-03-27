@@ -3,11 +3,11 @@
     "dwl-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1711507491,
-        "narHash": "sha256-Ggpxoss/j9SktnVCeSIKDlaExfo8Hrn6pDF194EmNzc=",
+        "lastModified": 1711565682,
+        "narHash": "sha256-wc5X8QN1DNC+okRlOx2RS3l4xsIQPU9MsYbwTSDTJEs=",
         "ref": "personalMain",
-        "rev": "7f881d8a26681fe3d312f03d63063b1ed12ba9a6",
-        "revCount": 1159,
+        "rev": "f97195bc6596ee5acd9d30f608324df1785600d6",
+        "revCount": 1163,
         "type": "git",
         "url": "https://codeberg.org/ThiagoAssis/dwl"
       },
@@ -52,11 +52,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1711331653,
-        "narHash": "sha256-ay51N+uXnWdU1DJtOrKu7eHxDOoUstSp75j8KjUftXI=",
+        "lastModified": 1711481231,
+        "narHash": "sha256-J/fW3Xhm3WsJPNd8ksZmfMnol5aOG2qEMDPbOnNNdTQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "55cca434b7ee466df8ab30dff67b39a6ab6c526a",
+        "rev": "9d6ddb13cee3cc1192e4430277708c732685f38a",
         "type": "github"
       },
       "original": {
