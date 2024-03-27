@@ -10,9 +10,9 @@
   hardware.enableRedistributableFirmware = true;
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "k10temp" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelModules = [ "acpi_call" "amd-pstate" "k10temp" ];
+  boot.extraModulePackages = [ unstable-pkgs.linuxKernel.packages.linux_zen.acpi_call ];
   boot.kernelPackages = unstable-pkgs.linuxPackages_zen;
 
   fileSystems."/" = {

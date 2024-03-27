@@ -15,11 +15,7 @@
     username = "thiago";
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
-    packages = with pkgs; [
-      neofetch
-      wbg
-      dmenu-wayland
-    ];
+    packages = with pkgs; [ inetutils neofetch wbg dmenu-wayland ];
     sessionVariables = { MOZ_ENABLE_WAYLAND = 1; };
   };
 
