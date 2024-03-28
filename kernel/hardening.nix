@@ -1,25 +1,26 @@
-{ config, pkgs, ... }: {
-  nix.settings.allowed-users = [ "@users" ];
+{ config, pkgs, lib, ... }:
+with lib; {
+  nix.settings.allowed-users = mkDefault [ "@users" ];
 
-  environment.memoryAllocator.provider = "scudo";
-  environment.variables.SCUDO_OPTIONS = "ZeroContents=1";
+  environment.memoryAllocator.provider = mkDefault "scudo";
+  environment.variables.SCUDO_OPTIONS = mkDefault "ZeroContents=1";
 
   security = {
-    lockKernelModules = true;
+    lockKernelModules = mkDefault true;
 
-    protectKernelImage = true;
+    protectKernelImage = mkDefault true;
 
-    allowSimultaneousMultithreading = false;
+    allowSimultaneousMultithreading = mkDefault false;
 
-    forcePageTableIsolation = true;
+    forcePageTableIsolation = mkDefault true;
 
     # This is required by podman to run containers in rootless mode.
-    unprivilegedUsernsClone = config.virtualisation.containers.enable;
+    unprivilegedUsernsClone = mkDefault config.virtualisation.containers.enable;
 
-    virtualisation.flushL1DataCache = "always";
+    virtualisation.flushL1DataCache = mkDefault "always";
 
-    apparmor.enable = true;
-    apparmor.killUnconfinedConfinables = true;
+    apparmor.enable = mkDefault true;
+    apparmor.killUnconfinedConfinables = mkDefault true;
   };
 
   boot = {
@@ -69,37 +70,37 @@
 
     # Hide kptrs even for processes with CAP_SYSLOG
     kernel.sysctl = {
-      "kernel.kptr_restrict" = 500 2;
+      "kernel.kptr_restrict" = lib.mkOverride 500 2;
 
       # Disable bpf() JIT (to eliminate spray attacks)
-      "net.core.bpf_jit_enable" = false;
+      "net.core.bpf_jit_enable" = mkDefault false;
 
       # Disable ftrace debugging
-      "kernel.ftrace_enabled" = false;
+      "kernel.ftrace_enabled" = mkDefault false;
 
       # Enable strict reverse path filtering (that is, do not attempt to route
       # packets that "obviously" do not belong to the iface's network; dropped
       # packets are logged as martians).
-      "net.ipv4.conf.all.log_martians" = true;
-      "net.ipv4.conf.all.rp_filter" = "1";
-      "net.ipv4.conf.default.log_martians" = true;
-      "net.ipv4.conf.default.rp_filter" = "1";
+      "net.ipv4.conf.all.log_martians" = mkDefault true;
+      "net.ipv4.conf.all.rp_filter" = mkDefault "1";
+      "net.ipv4.conf.default.log_martians" = mkDefault true;
+      "net.ipv4.conf.default.rp_filter" = mkDefault "1";
 
       # Ignore broadcast ICMP (mitigate SMURF)
-      "net.ipv4.icmp_echo_ignore_broadcasts" = true;
+      "net.ipv4.icmp_echo_ignore_broadcasts" = mkDefault true;
 
       # Ignore incoming ICMP redirects (note: default is needed to ensure that the
       # setting is applied to interfaces added after the sysctls are set)
-      "net.ipv4.conf.all.accept_redirects" = false;
-      "net.ipv4.conf.all.secure_redirects" = false;
-      "net.ipv4.conf.default.accept_redirects" = false;
-      "net.ipv4.conf.default.secure_redirects" = false;
-      "net.ipv6.conf.all.accept_redirects" = false;
-      "net.ipv6.conf.default.accept_redirects" = false;
+      "net.ipv4.conf.all.accept_redirects" = mkDefault false;
+      "net.ipv4.conf.all.secure_redirects" = mkDefault false;
+      "net.ipv4.conf.default.accept_redirects" = mkDefault false;
+      "net.ipv4.conf.default.secure_redirects" = mkDefault false;
+      "net.ipv6.conf.all.accept_redirects" = mkDefault false;
+      "net.ipv6.conf.default.accept_redirects" = mkDefault false;
 
       # Ignore outgoing ICMP redirects (this is ipv4 only)
-      "net.ipv4.conf.all.send_redirects" = false;
-      "net.ipv4.conf.default.send_redirects" = false;
+      "net.ipv4.conf.all.send_redirects" = mkDefault false;
+      "net.ipv4.conf.default.send_redirects" = mkDefault false;
     };
   };
 }
