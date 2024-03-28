@@ -13,6 +13,14 @@
     ../../package/dwl
   ];
 
+  nixpkgs.hostPlatform = {
+    gcc.arch = "znver3";
+    gcc.tune = "znver3";
+    system = "x86_64-linux";
+  };
+
+  programs.steam.enable = true;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -20,7 +28,7 @@
   boot.loader.systemd-boot.configurationLimit = 5;
   security.polkit.enable = true;
   environment.systemPackages = with pkgs; [
-    (import ./package/scripts/startPolkit.nix { inherit pkgs; })
+    (import ../../package/scripts/startPolkit.nix { inherit pkgs; })
     polkit_gnome
   ];
   services.gnome.gnome-keyring.enable = true;
@@ -103,7 +111,7 @@
     isNormalUser = true;
     extraGroups =
       [ "video" "seat" "wheel" "audio" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ firefox ];
+    packages = with pkgs; [ ];
   };
 
   networking.firewall.enable = true;

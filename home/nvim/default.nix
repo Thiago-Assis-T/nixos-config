@@ -81,6 +81,7 @@
     ];
 
     extraPackages = with pkgs; [
+      gcc
       yaml-language-server
       yamlfmt
       yamllint

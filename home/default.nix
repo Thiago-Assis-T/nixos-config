@@ -8,14 +8,16 @@
     mimeApps = { enable = true; };
   };
 
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+  };
 
   home = {
     username = "thiago";
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
     packages = with pkgs; [
-      cpu-x
+      wl-clipboard
       lm_sensors
       btop
       mpv

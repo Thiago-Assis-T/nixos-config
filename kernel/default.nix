@@ -1,12 +1,15 @@
 { config, lib, pkgs, ... }: {
 
+  import = [ ./hardening.nix ];
+
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_hardened;
     initrd.availableKernelModules =
       [ "amdgpu" "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
     initrd.kernelModules = [ "amdgpu" ];
     kernelModules = [ "acpi_call" "amd-pstate" "k10temp" ];
-    extraModulePackages = [ pkgs.linuxKernel.packages.linux_zen.acpi_call ];
+    extraModulePackages =
+      [ pkgs.linuxKernel.packages.linux_hardened.acpi_call ];
 
     # For Monero Mining:
     kernel.sysctl = { "vm.nr_hugepages" = 3072; };
@@ -16,7 +19,6 @@
       "hugepagesz=1G"
       "hugepages=3"
     ];
-
 
   };
 }
