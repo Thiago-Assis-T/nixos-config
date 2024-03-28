@@ -15,6 +15,7 @@
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
     packages = with pkgs; [
+      cpu-x
       lm_sensors
       btop
       mpv

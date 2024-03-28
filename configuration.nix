@@ -11,6 +11,7 @@
     ./modules/monero/default.nix
     ./package/slstatus/default.nix
     ./package/dwl/default.nix
+    ./package/scripts/startPolkit.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -55,6 +56,7 @@
   ];
 
   security.polkit.enable = true;
+  environment.systemPackages = with pkgs; [ polkit_gnome ];
   services.gnome.gnome-keyring.enable = true;
   services.seatd.enable = true;
   xdg = {
@@ -135,7 +137,7 @@
     isNormalUser = true;
     extraGroups =
       [ "video" "seat" "wheel" "audio" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ mate.mate-polkit geekbench firefox ];
+    packages = with pkgs; [ geekbench firefox ];
   };
 
   networking.firewall.enable = true;
