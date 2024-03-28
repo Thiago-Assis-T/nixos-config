@@ -2,8 +2,9 @@
 with lib; {
   nix.settings.allowed-users = mkDefault [ "@users" ];
 
-  environment.memoryAllocator.provider = mkDefault "scudo";
-  environment.variables.SCUDO_OPTIONS = mkDefault "ZeroContents=1";
+  # gave me problems with firefox openning
+  # environment.memoryAllocator.provider = mkDefault "scudo";
+  # environment.variables.SCUDO_OPTIONS = mkDefault "ZeroContents=1";
 
   security = {
     lockKernelModules = mkDefault true;
@@ -15,7 +16,8 @@ with lib; {
     forcePageTableIsolation = mkDefault true;
 
     # This is required by podman to run containers in rootless mode.
-    unprivilegedUsernsClone = mkDefault config.virtualisation.containers.enable;
+    unprivilegedUsernsClone = mkDefault
+      (config.virtualisation.containers.enable || config.programs.steam.enable);
 
     virtualisation.flushL1DataCache = mkDefault "always";
 

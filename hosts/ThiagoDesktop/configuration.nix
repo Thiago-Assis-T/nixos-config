@@ -12,6 +12,12 @@
     ../../package/slstatus
     ../../package/dwl
   ];
+  programs.coolercontrol.enable = true;
+
+  services.xserver.displayManager.gdm = {
+    enable = true;
+    wayland = true;
+  };
 
   nixpkgs.hostPlatform = {
     gcc.arch = "znver3";
@@ -19,7 +25,11 @@
     system = "x86_64-linux";
   };
 
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
+  boot.initrd.systemd.dbus.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -96,7 +106,7 @@
     settings = {
       default_session = {
         command =
-          "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd 'slstatus -s | dbus-launch --exit-with-session dwl'";
+          "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd 'slstatus -s | dbus-run-session dwl'";
         user = "thiago";
       };
 
