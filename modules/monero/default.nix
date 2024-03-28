@@ -4,13 +4,6 @@ let
     "43974ZxwbJvMq8BpXJTqHhMjXsUKhDQJEYfa1YFMdsWf2onzSQwAwccPtYvmUxdNYxL18TEL6qVf7gLxUdH9FxYvTA3G3eB";
 in {
 
-  imports = [ ];
-
-  boot = {
-    kernel.sysctl = { "vm.nr_hugepages" = 3072; };
-    kernelParams = [ "default_hugepagesz=2M" "hugepagesz=1G" "hugepages=3" ];
-  };
-
   environment.systemPackages = with pkgs; [ pkgs.p2pool pkgs.xmrig ];
 
   systemd.services.p2pool = {

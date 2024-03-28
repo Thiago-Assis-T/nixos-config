@@ -7,10 +7,10 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./modules/powermanagement.nix
-    ./modules/monero/default.nix
-    ./package/slstatus/default.nix
-    ./package/dwl/default.nix
+    ../../modules/powerManagement
+    ../../modules/monero
+    ../../package/slstatus
+    ../../package/dwl
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -18,47 +18,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.memtest86.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
-  systemd.services.bugfixSuspend-GPP0 = {
-    enable = lib.mkDefault true;
-    description = "Fix crash on wakeup from suspend/hibernate (b550 bugfix)";
-    unitConfig = { Type = "oneshot"; };
-    serviceConfig = {
-      User = "root"; # root may not be necessary
-      # check for gppN, disable if enabled
-      # lifted from  https://www.reddit.com/r/gigabyte/comments/p5ewjn/comment/ksbm0mb/ /u/Demotay
-      ExecStart =
-        "-${pkgs.bash}/bin/bash -c 'if grep 'GPP0' /proc/acpi/wakeup | grep -q 'enabled'; then echo 'GPP0' > /proc/acpi/wakeup; fi'";
-      RemainAfterExit =
-        "yes"; # required to not toggle when `nixos-rebuild switch` is ran
-
-    };
-    wantedBy = [ "multi-user.target" ];
-  };
-
-  systemd.services.bugfixSuspend-GPP8 = {
-    enable = lib.mkDefault true;
-    description = "Fix crash on wakeup from suspend/hibernate (b550 bugfix)";
-    unitConfig = { Type = "oneshot"; };
-    serviceConfig = {
-      User = "root";
-      ExecStart =
-        "-${pkgs.bash}/bin/bash -c 'if grep 'GPP8' /proc/acpi/wakeup | grep -q 'enabled'; then echo 'GPP8' > /proc/acpi/wakeup; fi''";
-      RemainAfterExit = "yes";
-    };
-    wantedBy = [ "multi-user.target" ];
-  };
-  boot.kernelParams = [
-    "amd_pstate=active"
-    "amdgpu.sg_display=0"
-    "initcall_blacklist=acpi_cpufreq_init"
-    "usbcore.autosuspend=-1"
-  ];
-
   security.polkit.enable = true;
   environment.systemPackages = with pkgs; [
     (import ./package/scripts/startPolkit.nix { inherit pkgs; })
     polkit_gnome
-    
   ];
   services.gnome.gnome-keyring.enable = true;
   services.seatd.enable = true;

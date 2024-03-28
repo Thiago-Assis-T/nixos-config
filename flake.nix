@@ -43,8 +43,8 @@
           specialArgs = { inherit hosts system pkgs dwl-src slstatus-src; };
 
           modules = [
+            ./hosts/ThiagoDesktop/configuration.nix
             home-manager.nixosModules.home-manager
-            ./configuration.nix
             {
               home-manager = {
                 useGlobalPkgs = true;
