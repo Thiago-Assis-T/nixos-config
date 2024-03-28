@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: {
 
-  import = [ ./hardening.nix ];
+  imports = [ ./hardening.nix ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_hardened;
