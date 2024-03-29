@@ -11,7 +11,7 @@
     ../../modules/monero
     ../../package/slstatus
     ../../package/dwl
-    ../../package/someblocks
+    ../../package/scripts/startPolkit.nix
   ];
   programs.coolercontrol.enable = true;
 
@@ -38,11 +38,7 @@
   boot.loader.systemd-boot.memtest86.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
   security.polkit.enable = true;
-  environment.systemPackages = with pkgs; [
-    (import ../../package/scripts/startPolkit.nix { inherit pkgs; })
-    someblocks
-    polkit_gnome
-  ];
+  environment.systemPackages = with pkgs; [ ];
   services.gnome.gnome-keyring.enable = true;
   services.seatd.enable = true;
   xdg = {

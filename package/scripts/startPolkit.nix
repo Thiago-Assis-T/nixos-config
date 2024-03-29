@@ -1,4 +1,6 @@
 { pkgs, ... }:
-pkgs.writeShellScriptBin "startPolkit" ''
-  exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
-''
+let
+  startPolkit = pkgs.writeShellScriptBin "startPolkit" ''
+    exec ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1 &
+  '';
+in { environment.systemPackages = with pkgs; [ startPolkit mate.mate-polkit ]; }
