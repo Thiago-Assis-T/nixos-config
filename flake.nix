@@ -3,6 +3,11 @@
 
   inputs = {
 
+    someblocks-src = {
+      url = "git+https://git.sr.ht/~raphi/someblocks?ref=master";
+      flake = false;
+    };
+
     dwl-src = {
       url = "git+https://codeberg.org/ThiagoAssis/dwl?ref=personalMain";
       flake = false;

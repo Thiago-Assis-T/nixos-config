@@ -11,6 +11,7 @@
     ../../modules/monero
     ../../package/slstatus
     ../../package/dwl
+    ../../package/someblocks
   ];
   programs.coolercontrol.enable = true;
 
@@ -39,6 +40,7 @@
   security.polkit.enable = true;
   environment.systemPackages = with pkgs; [
     (import ../../package/scripts/startPolkit.nix { inherit pkgs; })
+    someblocks
     polkit_gnome
   ];
   services.gnome.gnome-keyring.enable = true;

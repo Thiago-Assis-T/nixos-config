@@ -28,12 +28,12 @@
     sessionVariables = {
       NIXOS_OZONE_WL = 1;
       MOZ_ENABLE_WAYLAND = 1;
-      GDK_BACKEND="wayland,x11";
-      SDL_VIDEODRIVER="wayland";
-      CLUTTER_BACKEND="wayland";
-      XDG_CURRENT_DESKTOP="dwl";
-      XDG_SESSION_TYPE="wayland";
-      XDG_SESSION_DESKTOP="dwl";
+      GDK_BACKEND = "wayland,x11";
+      SDL_VIDEODRIVER = "wayland";
+      CLUTTER_BACKEND = "wayland";
+      XDG_CURRENT_DESKTOP = "dwl";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_SESSION_DESKTOP = "dwl";
     };
 
   };
