@@ -2,6 +2,16 @@
   description = "NixOS Desktop Config:";
 
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hosts = {
+      url = "file+http://sbc.io/hosts/alternates/fakenews-gambling-porn/hosts";
+      flake = false;
+    };
 
     dwl-src = {
       url = "git+https://codeberg.org/ThiagoAssis/dwl?ref=personalMain";
@@ -13,22 +23,14 @@
       flake = false;
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
-
-    hosts = {
-      url = "file+http://sbc.io/hosts/alternates/fakenews-gambling-porn/hosts";
-      flake = false;
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     xplr-tree-view = {
       url = "git+https://github.com/sayanarijit/tree-view.xplr?ref=main";
       flake = false;
-
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -50,6 +52,7 @@
 
           modules = [
             ./hosts/ThiagoDesktop/configuration.nix
+            inputs.nixvim.homeManagerModules.nixvim
             home-manager.nixosModules.home-manager
             {
               home-manager = {

@@ -1,104 +1,32 @@
-{ config, pkgs, ... }: {
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    extraLuaConfig = builtins.readFile ./lua/ExtraLuaConfig.lua;
-    plugins = with pkgs.vimPlugins; [
-      nvim-treesitter.withAllGrammars
-      plenary-nvim
-      telescope-fzf-native-nvim
-      fuzzy-nvim
-      nvim-web-devicons
-      cmp-nvim-lsp
-      cmp_luasnip
-      cmp-fuzzy-path
-      cmp-fuzzy-buffer
-      nvim-notify
-      nvim-lsp-notify
-      {
-        plugin = fidget-nvim;
-        type = "lua";
-        config = builtins.readFile ./lua/fidget.lua;
-      }
-      {
-        plugin = noice-nvim;
-        type = "lua";
-        config = builtins.readFile ./lua/noice.lua;
-      }
-      {
-        plugin = nvim-treesitter;
-        type = "lua";
-        config = builtins.readFile ./lua/treesitter.lua;
-      }
-      {
-        plugin = tokyonight-nvim;
-        type = "lua";
-        config = builtins.readFile ./lua/colors.lua;
-      }
-      {
-        plugin = lualine-nvim;
-        type = "lua";
-        config = builtins.readFile ./lua/lualine.lua;
-      }
-      {
-        plugin = telescope-nvim;
-        type = "lua";
-        config = builtins.readFile ./lua/telescope.lua;
-      }
-      {
-        plugin = nvim-lspconfig;
-        type = "lua";
-        config = builtins.readFile ./lua/lspconfig.lua;
-      }
-      {
-        plugin = gitsigns-nvim;
-        type = "lua";
-        config = builtins.readFile ./lua/gitsigns.lua;
-      }
-      {
-        plugin = nvim-cmp;
-        type = "lua";
-        config = builtins.readFile ./lua/cmp.lua;
-      }
-      {
-        plugin = luasnip;
-        type = "lua";
-        config = builtins.readFile ./lua/luasnip.lua;
-      }
-      {
-        plugin = nvim-lint;
-        type = "lua";
-        config = builtins.readFile ./lua/linter.lua;
-      }
-      {
-        plugin = formatter-nvim;
-        type = "lua";
-        config = builtins.readFile ./lua/formatter.lua;
-      }
-    ];
+{ config, pkgs, nixvim, ... }: {
+  programs.nixvim = {
+    colorscheme.ayu.enable = true;
+    clipboard.providers.wl-copy.enable = true;
+    plugins = {
+      treesitter = {
+        enable = true;
+        ensureInstalled = "all";
+        folding = true;
+        indent = true;
+        nixvimInjections = true;
+        incrementalSelection.enable = true;
+      };
+      treesitter-context = {
+        enable = true;
+        lineNumbers = true;
+      };
+      treesitter-refactor = {
+        enable = true;
+        highlightCurrentScope.enable = true;
+        navigation.enable = true;
+        smartReaname.enable = true;
+      };
 
-    extraPackages = with pkgs; [
-      gcc
-      yaml-language-server
-      yamlfmt
-      yamllint
-      statix
-      nixfmt
-      gopls
-      gofumpt
-      gotools
-      golines
-      golangci-lint
-      lua-language-server
-      stylua
-      marksman
-      ripgrep
-      fd
-      tree-sitter
-    ];
+      lualine.enable = true;
+      nix.enable = true;
+      nix-develop.enable = true;
+    };
+
   };
-  home.sessionVariables = { EDITOR = "nvim"; };
+
 }
