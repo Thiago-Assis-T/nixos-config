@@ -1504,8 +1504,8 @@ xplr.config.modes.builtin.move_to = {
                 if [ -e "$BASENAME" ]; then
                   echo
                   echo "$BASENAME_ESC exists, do you want to overwrite it?"
-                  read -p "[y]es, [n]o, [S]kip: " ANS < /dev/tty
-                  case "$ANS" in
+                  read -p "[y]es, [n]o, [S]kip: " AND < /dev/tty
+                  case "$AND" in
                     [yY]*)
                       ;;
                     [nN]*)
@@ -1575,8 +1575,8 @@ xplr.config.modes.builtin.copy_to = {
                 if [ -e "$BASENAME" ]; then
                   echo
                   echo "$BASENAME_ESC exists, do you want to overwrite it?"
-                  read -p "[y]es, [n]o, [S]kip: " ANS < /dev/tty
-                  case "$ANS" in
+                  read -p "[y]es, [n]o, [S]kip: " AND < /dev/tty
+                  case "$AND" in
                     [yY]*)
                       ;;
                     [nN]*)
@@ -1674,8 +1674,8 @@ xplr.config.modes.builtin.selection_ops = {
                 if [ -e "$BASENAME" ]; then
                   echo
                   echo "$BASENAME_ESC exists, do you want to overwrite it?"
-                  read -p "[y]es, [n]o, [S]kip: " ANS < /dev/tty
-                  case "$ANS" in
+                  read -p "[y]es, [n]o, [S]kip: " AND < /dev/tty
+                  case "$AND" in
                     [yY]*)
                       ;;
                     [nN]*)
@@ -1714,8 +1714,8 @@ xplr.config.modes.builtin.selection_ops = {
                 if [ -e "$BASENAME" ]; then
                   echo
                   echo "$BASENAME_ESC exists, do you want to overwrite it?"
-                  read -p "[y]es, [n]o, [S]kip: " ANS < /dev/tty
-                  case "$ANS" in
+                  read -p "[y]es, [n]o, [S]kip: " AND < /dev/tty
+                  case "$AND" in
                     [yY]*)
                       ;;
                     [nN]*)
@@ -1754,8 +1754,8 @@ xplr.config.modes.builtin.selection_ops = {
                 if [ -e "$BASENAME" ]; then
                   echo
                   echo "$BASENAME_ESC exists, do you want to overwrite it?"
-                  read -p "[y]es, [n]o, [S]kip: " ANS < /dev/tty
-                  case "$ANS" in
+                  read -p "[y]es, [n]o, [S]kip: " AND < /dev/tty
+                  case "$AND" in
                     [yY]*)
                       ;;
                     [nN]*)
@@ -1794,8 +1794,8 @@ xplr.config.modes.builtin.selection_ops = {
                 if [ -e "$BASENAME" ]; then
                   echo
                   echo "$BASENAME_ESC exists, do you want to overwrite it?"
-                  read -p "[y]es, [n]o, [S]kip: " ANS < /dev/tty
-                  case "$ANS" in
+                  read -p "[y]es, [n]o, [S]kip: " AND < /dev/tty
+                  case "$AND" in
                     [yY]*)
                       ;;
                     [nN]*)
@@ -2168,8 +2168,8 @@ xplr.config.modes.builtin.delete = {
                 printf '%q\n' "$PTH"
               done < "${XPLR_PIPE_RESULT_OUT:?}"
               echo
-              read -p "Permanently delete these files? [Y/n]: " ANS
-              [ "${ANS:-Y}" = "Y" ] || [ "$ANS" = "y" ] || exit 0
+              read -p "Permanently delete these files? [Y/n]: " AND
+              [ "${AND:-Y}" = "Y" ] || [ "$AND" = "y" ] || exit 0
               echo
 
               "$XPLR" -m ExplorePwd
@@ -2198,8 +2198,8 @@ xplr.config.modes.builtin.delete = {
                 printf '%q\n' "$PTH"
               done < "${XPLR_PIPE_RESULT_OUT:?}"
               echo
-              read -p "Permanently delete these files? [Y/n]: " ANS
-              [ "${ANS:-Y}" = "Y" ] || [ "$ANS" = "y" ] || exit 0
+              read -p "Permanently delete these files? [Y/n]: " AND
+              [ "${AND:-Y}" = "Y" ] || [ "$AND" = "y" ] || exit 0
               echo
 
               "$XPLR" -m ExplorePwd

@@ -10,12 +10,12 @@
 
   programs.firefox = { enable = true; };
 
-
   home = {
     username = "thiago";
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
     packages = with pkgs; [
+      nerdfonts
       asciiquarium-transparent
       ani-cli
       manga-cli

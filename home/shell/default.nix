@@ -7,8 +7,6 @@
       shellAliases = {
         htop = "sudo htop";
         cat = "bat";
-        vim = "nvim";
-        vi = "nvim";
         ytfzf = "ytfzf -t";
 
       };

@@ -35,7 +35,7 @@
   };
 
   outputs = inputs@{ self, home-manager, nixpkgs, hosts, dwl-src, slstatus-src
-    , xplr-tree-view, ... }:
+    , xplr-tree-view, nixvim, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -52,7 +52,6 @@
 
           modules = [
             ./hosts/ThiagoDesktop/configuration.nix
-            inputs.nixvim.homeManagerModules.nixvim
             home-manager.nixosModules.home-manager
             {
               home-manager = {
