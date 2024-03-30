@@ -1,10 +1,4 @@
 { config, pkgs, inputs, ... }: {
-  # TODO
-  # Add Plugins:
-  #
-  # 2. Comment, Dashboard, Fidget, xplr, fzf
-  #
-  #
   imports = [ inputs.nixvim.homeManagerModules.nixvim ];
   home.packages = with pkgs; [ ripgrep nixfmt codespell ];
   programs.nixvim = {
@@ -60,6 +54,7 @@
 
     colorschemes.ayu.enable = true;
     plugins = {
+      transparent.enable = true;
       noice.enable = true;
       trouble.enable = true;
       fidget.enable = true;
