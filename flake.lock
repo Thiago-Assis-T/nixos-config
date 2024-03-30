@@ -72,7 +72,8 @@
         "home-manager": "home-manager",
         "hosts": "hosts",
         "nixpkgs": "nixpkgs",
-        "slstatus-src": "slstatus-src"
+        "slstatus-src": "slstatus-src",
+        "xplr-tree-view": "xplr-tree-view"
       }
     },
     "slstatus-src": {
@@ -89,6 +90,23 @@
       "original": {
         "type": "git",
         "url": "https://codeberg.org/ThiagoAssis/slstatus.git"
+      }
+    },
+    "xplr-tree-view": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704284021,
+        "narHash": "sha256-v9KDupi5l3F+Oa5X6pc/Qz9EhaFIrnQK5sckjne/kIU=",
+        "ref": "main",
+        "rev": "eeba82a862ca296db253d7319caf730ce1f034c2",
+        "revCount": 49,
+        "type": "git",
+        "url": "https://github.com/sayanarijit/tree-view.xplr"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://github.com/sayanarijit/tree-view.xplr"
       }
     }
   },

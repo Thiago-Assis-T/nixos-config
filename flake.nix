@@ -20,14 +20,20 @@
       flake = false;
     };
 
+    xplr-tree-view = {
+      url = "git+https://github.com/sayanarijit/tree-view.xplr?ref=main";
+      flake = false;
+
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs =
-    inputs@{ self, home-manager, nixpkgs, hosts, dwl-src, slstatus-src, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, hosts, dwl-src, slstatus-src
+    , xplr-tree-view, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -50,7 +56,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit inputs system pkgs dwl-src slstatus-src;
+                  inherit inputs system pkgs xplr-tree-view;
                 };
                 users.thiago = import ./home;
               };
