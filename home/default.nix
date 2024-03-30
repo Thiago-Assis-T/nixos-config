@@ -1,7 +1,7 @@
 { pkgs, inputs, config, ... }:
 
 {
-  imports = [ ./foot ./shell ./git ./nvim ./wezterm ];
+  imports = [ ./xplr ./foot ./shell ./git ./nvim ./wezterm ];
   services.gnome-keyring.enable = true;
   xdg = {
     enable = true;
@@ -9,13 +9,17 @@
   };
 
   programs.firefox = { enable = true; };
-  services.dunst.enable = true;
+
 
   home = {
     username = "thiago";
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
     packages = with pkgs; [
+      asciiquarium-transparent
+      ani-cli
+      manga-cli
+      ytfzf
       wl-clipboard
       lm_sensors
       btop
@@ -38,4 +42,5 @@
 
   };
 
+  xdg = { mime.enable = true; };
 }

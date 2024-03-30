@@ -13,12 +13,8 @@
     ../../package/dwl
     ../../package/scripts/startPolkit.nix
   ];
-  programs.coolercontrol.enable = true;
 
-  services.xserver.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
+environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   nixpkgs.hostPlatform = {
     gcc.arch = "znver3";
@@ -26,10 +22,6 @@
     system = "x86_64-linux";
   };
 
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
-  };
   boot.initrd.systemd.dbus.enable = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -113,7 +105,7 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver.enable = false;
   services.xserver.xkb.layout = "br";
   users.users.thiago = {
     isNormalUser = true;

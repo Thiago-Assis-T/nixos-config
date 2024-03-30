@@ -3,11 +3,11 @@
     "dwl-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1711647289,
-        "narHash": "sha256-dXInrswP5J52Wo+21bbuiIOyF/6wqcu2LGoxjiGtxCY=",
+        "lastModified": 1711756584,
+        "narHash": "sha256-ktJ1uv51J4w5mKcRswJPWWIPgjmCHXET4qE/ixrMCf0=",
         "ref": "personalMain",
-        "rev": "9b635b93ebc6f7001689c5d3274d09492f86f536",
-        "revCount": 1171,
+        "rev": "2ade570cd70589fb2888e089cd64119f83933462",
+        "revCount": 1180,
         "type": "git",
         "url": "https://codeberg.org/ThiagoAssis/dwl"
       },
