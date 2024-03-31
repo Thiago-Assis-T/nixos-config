@@ -6,6 +6,13 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    extraConfigLua = ''
+      vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "SignColumn", { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#0f1419", ctermbg = "none" })
+    '';
     clipboard = {
       # Use system clipboard
       register = "unnamedplus";
@@ -33,7 +40,7 @@
         true; # Override the 'ignorecase' option if the search pattern contains upper
       #   case characters
       scrolloff = 8; # Number of screen lines to show around the cursor
-      cursorline = true; # Highlight the screen line of the cursor
+      cursorline = false; # Highlight the screen line of the cursor
       cursorcolumn = false; # Highlight the screen column of the cursor
       signcolumn = "yes"; # Whether to show the signcolumn
       fileencoding = "utf-8"; # File-content encoding for the current buffer
@@ -54,7 +61,6 @@
 
     colorschemes.ayu.enable = true;
     plugins = {
-      transparent.enable = true;
       noice.enable = true;
       trouble.enable = true;
       fidget.enable = true;
