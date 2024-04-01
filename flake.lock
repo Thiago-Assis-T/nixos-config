@@ -25,11 +25,11 @@
     "dwl-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1711832571,
-        "narHash": "sha256-PVstxqKD+HysO7ESp0VgwDP9756n1gDEnmVeul6Slro=",
+        "lastModified": 1711900412,
+        "narHash": "sha256-9GUPnGluNZWJorxF6j25EF5xX5B1A30TgiJnBamZYt0=",
         "ref": "personalMain",
-        "rev": "aec256965308c3586637b7d4436cd35314aec686",
-        "revCount": 1181,
+        "rev": "574f0e86eecb1cf01717b3ee79bc2319ba887d25",
+        "revCount": 1185,
         "type": "git",
         "url": "https://codeberg.org/ThiagoAssis/dwl"
       },
@@ -155,11 +155,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711625603,
-        "narHash": "sha256-W+9dfqA9bqUIBV5u7jaIARAzMe3kTq/Hp2SpSVXKRQw=",
+        "lastModified": 1711915616,
+        "narHash": "sha256-co6LoFA+j6BZEeJNSR8nZ4oOort5qYPskjrDHBaJgmo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c0ef0dab55611c676ad7539bf4e41b3ec6fa87d2",
+        "rev": "820be197ccf3adaad9a8856ef255c13b6cc561a6",
         "type": "github"
       },
       "original": {
@@ -225,11 +225,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1711810502,
-        "narHash": "sha256-KSmbNHD7Zh/f7cYgu0gwCg6gNGMn48MB7h6mxnP1304=",
+        "lastModified": 1711939449,
+        "narHash": "sha256-k8HBuawAk2hWNzNkCiGebbStq3opqnyV1RdHXXojxNg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "35fde99980ebe5533bd75db71ea0894ceba11595",
+        "rev": "292a4d8fa11907f90eb2e9730b8cf2414f03bf58",
         "type": "github"
       },
       "original": {
@@ -252,11 +252,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1711809391,
-        "narHash": "sha256-/nGV6P8nB/R/ysbl1KQIKIwp1mQPXxtnoEd+pf3X+nw=",
+        "lastModified": 1711888895,
+        "narHash": "sha256-Hykv2DGC5EHzZ89+54w/zkit+CVGLRcdIgOWnB4zW5k=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "0c16f59202c5062d12ef9cd4560cc9fca9d99f9a",
+        "rev": "db6b61f117c83943f15289ced03674f81d08256a",
         "type": "github"
       },
       "original": {
@@ -307,11 +307,11 @@
     "slstatus-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1711573889,
-        "narHash": "sha256-XfnnwSwycdAkWEJ2Dq827x2U5QEGxX9Kbgm9cbJ2dwY=",
+        "lastModified": 1711901063,
+        "narHash": "sha256-tyvJlTfUbxzAp4XdZtV28sZru+wVX7KfX97ZsEDyRwY=",
         "ref": "refs/heads/main",
-        "rev": "d369d11b8f341d9a3e04abb5c2cc2e25e62f4cf4",
-        "revCount": 21,
+        "rev": "5c4f68104744a087698bc01ee900f2d21855ca82",
+        "revCount": 22,
         "type": "git",
         "url": "https://codeberg.org/ThiagoAssis/slstatus.git"
       },

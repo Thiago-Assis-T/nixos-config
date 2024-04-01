@@ -1,16 +1,36 @@
 { config, pkgs, inputs, ... }: {
   imports = [ inputs.nixvim.homeManagerModules.nixvim ];
-  home.packages = with pkgs; [ ripgrep nixfmt codespell ];
+  home.packages = with pkgs; [
+    # Bash Scripting:
+    nodePackages_latest.bash-language-server
+    shellcheck
+    shfmt
+
+    # Telescope Dependency for find grep
+    ripgrep
+
+    # For nix formatting
+    nixfmt
+    nixpkgs-fmt
+
+    #For LaTeX:
+    texlab
+    bibtex-tidy
+    texliveFull
+    latexrun
+
+    # For code spell checking
+    codespell
+
+    # For treesitter
+    gcc
+  ];
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     extraConfigLua = ''
-      vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
-      vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
-      vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none", ctermbg = "none" })
-      vim.api.nvim_set_hl(0, "SignColumn", { bg = "none", ctermbg = "none" })
       vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#0f1419", ctermbg = "none" })
     '';
     clipboard = {
@@ -45,7 +65,7 @@
       signcolumn = "yes"; # Whether to show the signcolumn
       fileencoding = "utf-8"; # File-content encoding for the current buffer
       termguicolors = true; # Enables 24-bit RGB color in the |TUI|
-      spell = false; # Highlight spelling mistakes (local to window)
+      spell = true; # Highlight spelling mistakes (local to window)
       wrap = false; # Prevent text from wrapping
       # Tab options
       tabstop =
@@ -61,6 +81,14 @@
 
     colorschemes.ayu.enable = true;
     plugins = {
+      vimtex = {
+        enable = true;
+        settings = {
+          compiler_method = "latexrun";
+          view_method = "zathura";
+        };
+      };
+      transparent.enable = true;
       noice.enable = true;
       trouble.enable = true;
       fidget.enable = true;
@@ -85,7 +113,7 @@
       };
       treesitter-refactor = {
         enable = true;
-        highlightCurrentScope.enable = true;
+        highlightCurrentScope.enable = false;
         navigation.enable = true;
         smartRename.enable = true;
       };
@@ -243,7 +271,11 @@
           	end, "[W]orkspace [L]ist Folders")
           end
         '';
-        servers = { nixd.enable = true; };
+        servers = {
+          nixd.enable = true;
+          bashls.enable = true;
+          texlab.enable = true;
+        };
       };
       conform-nvim = {
         enable = true;
@@ -252,13 +284,22 @@
           timeoutMs = 250;
         };
         formattersByFt = {
-          nix = [ "nixfmt" ];
+          latex = [ "latexindent" ];
+          bibtex = [ "bibtex-tidy" ];
+          nix = [ "nixfmt" "nixpkgs-fmt" ];
+          bash = [ "shfmt" ];
           "*" = [ "codespell" "trim_whitespace" ];
         };
       };
       lint = {
         enable = true;
-        lintersByFt = { nix = [ "nix" ]; };
+        lintersByFt = {
+          nix = [ "nix" ];
+          bash = [ "shellcheck" ];
+          latex = [ "chktex" ];
+
+        };
+
       };
     };
   };

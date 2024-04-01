@@ -14,7 +14,12 @@
     ../../package/scripts/startPolkit.nix
   ];
 
-environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   nixpkgs.hostPlatform = {
     gcc.arch = "znver3";
@@ -49,6 +54,8 @@ environment.sessionVariables.NIXOS_OZONE_WL = "1";
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = [ pkgs.amdvlk ];
+    extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -104,8 +111,6 @@ environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = false;
   services.xserver.xkb.layout = "br";
   users.users.thiago = {
     isNormalUser = true;

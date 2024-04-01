@@ -10,20 +10,27 @@
 
   programs.firefox = { enable = true; };
 
+  programs.mpv.enable = true;
+
+  programs.zathura.enable = true;
+
+  fonts.fontconfig.enable = true;
+
   home = {
     username = "thiago";
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
     packages = with pkgs; [
+      unzip
+      exercism
+      bats
       nerdfonts
-      asciiquarium-transparent
       ani-cli
       manga-cli
       ytfzf
       wl-clipboard
       lm_sensors
       btop
-      mpv
       youtube-tui
       neofetch
       wbg
