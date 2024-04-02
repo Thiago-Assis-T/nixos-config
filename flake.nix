@@ -28,10 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    xplr-tree-view = {
-      url = "git+https://github.com/sayanarijit/tree-view.xplr?ref=main";
-      flake = false;
-    };
   };
 
   outputs = inputs@{ self, home-manager, nixpkgs, hosts, dwl-src, slstatus-src

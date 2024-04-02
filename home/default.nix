@@ -1,7 +1,7 @@
 { pkgs, inputs, config, ... }:
 
 {
-  imports = [ ./xplr ./foot ./shell ./git ./nvim ];
+  imports = [ ./foot ./shell ./git ./nvim ];
   services.gnome-keyring.enable = true;
   xdg = {
     enable = true;
