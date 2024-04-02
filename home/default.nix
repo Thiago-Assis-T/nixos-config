@@ -21,7 +21,9 @@
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
     packages = with pkgs; [
-      unzip
+      logseq
+      grim
+      slurp
       exercism
       bats
       nerdfonts
@@ -40,6 +42,7 @@
       NIXOS_OZONE_WL = 1;
       MOZ_ENABLE_WAYLAND = 1;
       GDK_BACKEND = "wayland,x11";
+      QT_QPA_PLATFORM = "wayland-egl";
       SDL_VIDEODRIVER = "wayland";
       CLUTTER_BACKEND = "wayland";
       XDG_CURRENT_DESKTOP = "dwl";

@@ -8,8 +8,7 @@
         htop = "sudo htop";
         cat = "bat";
         ytfzf = "ytfzf -t";
-        steam =
-          "gamescope -W 1920 -H 1080 -e --framerate-limit 60 -F fsr --fsr-sharpness 15 --force-windows-fullscreen -- steam";
+        steam = "gamescope -W 1920 -H 1080 -e --framerate-limit 65 -- steam";
 
       };
     };

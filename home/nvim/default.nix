@@ -24,6 +24,7 @@
 
     # For treesitter
     gcc
+
   ];
   programs.nixvim = {
     enable = true;
@@ -78,6 +79,16 @@
       textwidth =
         0; # Maximum width of text that is being inserted.  A longer line will be
     };
+    autoCmd = [{
+      event = [ "BufWritePost" ];
+      pattern = [ "*.tex" ];
+      callback.__raw = # lua
+        ''
+          function()
+            vim.cmd('VimtexCompile')
+          end
+        '';
+    }];
 
     colorschemes.ayu.enable = true;
     plugins = {
@@ -133,7 +144,7 @@
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-e>"] = cmp.mapping.abort(),
-                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<C-Space>"] = cmp.mapping.confirm({ select = true }),
               })
             '';
           };

@@ -15,7 +15,7 @@ in {
       Type = "simple";
       User = "monero";
       ExecStart =
-        "${pkgs.p2pool}/bin/p2pool --host 127.0.0.1 --wallet ${wallet} --mini --loglevel 6 --start-mining 8";
+        "${pkgs.p2pool}/bin/p2pool --host 127.0.0.1 --wallet ${wallet} --mini --loglevel 6";
       Restart = "always";
       RestartSec = 5;
     };
