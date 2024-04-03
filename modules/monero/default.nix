@@ -1,10 +1,16 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
-  wallet =
-    "43974ZxwbJvMq8BpXJTqHhMjXsUKhDQJEYfa1YFMdsWf2onzSQwAwccPtYvmUxdNYxL18TEL6qVf7gLxUdH9FxYvTA3G3eB";
-in {
+  wallet = "43974ZxwbJvMq8BpXJTqHhMjXsUKhDQJEYfa1YFMdsWf2onzSQwAwccPtYvmUxdNYxL18TEL6qVf7gLxUdH9FxYvTA3G3eB";
+  oneGbPages = "1gb-pages";
+in
+{
 
-  environment.systemPackages = with pkgs; [ pkgs.p2pool pkgs.xmrig ];
+  environment.systemPackages = with pkgs; [ pkgs.p2pool ];
 
   systemd.services.p2pool = {
     wantedBy = [ "multi-user.target" ];
@@ -14,33 +20,80 @@ in {
     serviceConfig = {
       Type = "simple";
       User = "monero";
-      ExecStart =
-        "${pkgs.p2pool}/bin/p2pool --host 127.0.0.1 --wallet ${wallet} --mini --loglevel 6";
+      ExecStart = "${pkgs.p2pool}/bin/p2pool --host 127.0.0.1 --wallet ${wallet} --mini --loglevel 6";
       Restart = "always";
       RestartSec = 5;
     };
-
   };
 
   # ./xmrig -o 127.0.0.1:3333 --randomx-1gb-pages
 
+  services.xmrig = {
+    enable = true;
+    settings = {
+      autosave = true;
+      background = false;
+      colors = true;
+      pause-on-active = true;
+      watch = true;
+      dmi = true;
+      randomx = {
+        mode = "auto";
+        ${oneGbPages} = true;
+        rdmsr = true;
+        wrmsr = false;
+        cache_qos = false;
+        numa = true;
+        scratchpad_prefetch_mode = 1;
+      };
+      cpu = {
+        enable = true;
+        huge-pages = true;
+        huge-pages-jit = true;
+        priority = 3;
+        yild = false;
+        max-threads-hint = 100;
+        asm = "ryzen";
+      };
+      retries = 10000;
+      pools = [
+        {
+          url = "127.0.0.1:3333";
+          keepalive = true;
+          tls = false;
+        }
+      ];
+    };
+  };
   systemd.services.xmrig = {
     wantedBy = [ "multi-user.target" ];
     after = [ "p2pool.service" ];
-    description = "Xmrig Miner.";
     serviceConfig = {
       Type = "simple";
       User = "root";
-      ExecStart =
-        "${pkgs.xmrig}/bin/xmrig -o 127.0.0.1:3333 -S --cpu-no-yield --huge-pages-jit --randomx-1gb-pages --cpu-priority=3 --asm ryzen --pause-on-active=300 --pause-on-battery";
       Restart = "always";
       RestartSec = 5;
+      DynamicUser = lib.mkForce true;
     };
   };
 
   networking.firewall = {
-    allowedUDPPorts = [ 18080 37889 37888 18084 18083 18081 ];
-    allowedTCPPorts = [ 18080 37889 37888 18084 18083 18081 ];
+    allowedUDPPorts = [
+      18080
+      37889
+      37888
+      18084
+      18083
+      18081
+    ];
+    allowedTCPPorts = [
+      18080
+      37889
+      37888
+      18084
+      18083
+      18081
+    ];
   };
 
   services = {

@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   programs.foot = {
     enable = true;
     server.enable = true;
@@ -33,7 +34,9 @@
         bright6 = "55b4d4"; # bright cyan
         bright7 = "5c6166"; # bright white
       };
-      mouse = { hide-when-typing = "yes"; };
+      mouse = {
+        hide-when-typing = "yes";
+      };
     };
   };
 }

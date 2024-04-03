@@ -2,10 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, hosts, dwl-src, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  hosts,
+  dwl-src,
+  ...
+}:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/powerManagement
     ../../modules/monero
@@ -58,7 +66,10 @@
     extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   services.fstrim.enable = true;
   services.btrfs.autoScrub = {
@@ -72,14 +83,11 @@
     enable = true;
     audio.enable = true;
     pulse.enable = true;
-    jack.enable = true;
     alsa = {
       enable = true;
       support32Bit = true;
     };
   };
-  services.jack.alsa.enable = true;
-  services.jack.alsa.support32Bit = true;
 
   networking.hostName = "ThiagoDesktop"; # Define your hostname.
   networking.hostFiles = [ hosts ];
@@ -105,24 +113,24 @@
     package = with pkgs; greetd.tuigreet;
     settings = {
       default_session = {
-        command =
-          "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd 'slstatus -s | dbus-run-session dwl'";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd 'slstatus -s | dbus-run-session dwl'";
         user = "thiago";
       };
-
     };
-
   };
 
   services.xserver.xkb.layout = "br";
   users.users.thiago = {
     isNormalUser = true;
-    extraGroups =
-      [ "video" "seat" "wheel" "audio" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "video"
+      "seat"
+      "wheel"
+      "audio"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [ ];
   };
 
   networking.firewall.enable = true;
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

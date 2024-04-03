@@ -27,24 +27,42 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, hosts, dwl-src, slstatus-src
-    , xplr-tree-view, nixvim, ... }:
+  outputs =
+    inputs@{
+      self,
+      home-manager,
+      nixpkgs,
+      hosts,
+      dwl-src,
+      slstatus-src,
+      nixvim,
+      ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
       };
-
-    in {
+    in
+    {
 
       nixosConfigurations = {
 
         ThiagoDesktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit hosts system pkgs dwl-src slstatus-src; };
+          specialArgs = {
+            inherit
+              hosts
+              system
+              pkgs
+              dwl-src
+              slstatus-src
+              ;
+          };
 
           modules = [
             ./hosts/ThiagoDesktop/configuration.nix
@@ -54,7 +72,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit inputs system pkgs xplr-tree-view;
+                  inherit inputs system pkgs;
                 };
                 users.thiago = import ./home;
               };
@@ -62,6 +80,5 @@
           ];
         };
       };
-
     };
 }

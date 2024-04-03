@@ -1,5 +1,11 @@
-{ config, pkgs, lib, ... }:
-with lib; {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
+{
   nix.settings.allowed-users = mkDefault [ "@users" ];
 
   # gave me problems with firefox opening:
@@ -8,17 +14,19 @@ with lib; {
   # environment.variables.SCUDO_OPTIONS = mkDefault "ZeroContents=1";
 
   security = {
-    lockKernelModules = mkDefault true;
+    lockKernelModules = mkDefault false;
 
     protectKernelImage = mkDefault true;
 
-    allowSimultaneousMultithreading = mkDefault false;
+    #don't want a performance hit
+    allowSimultaneousMultithreading = mkDefault true;
 
     forcePageTableIsolation = mkDefault true;
 
     # This is required by podman to run containers in rootless mode and steam to launch;
-    unprivilegedUsernsClone = mkDefault
-      (config.virtualisation.containers.enable || config.programs.steam.enable);
+    unprivilegedUsernsClone = mkDefault (
+      config.virtualisation.containers.enable || config.programs.steam.enable
+    );
 
     virtualisation.flushL1DataCache = mkDefault "always";
 

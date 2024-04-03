@@ -1,14 +1,28 @@
-{ pkgs, inputs, config, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 
 {
-  imports = [ ./foot ./shell ./git ./nvim ];
+  imports = [
+    ./foot
+    ./shell
+    ./git
+    ./nvim
+  ];
   services.gnome-keyring.enable = true;
   xdg = {
     enable = true;
-    mimeApps = { enable = true; };
+    mimeApps = {
+      enable = true;
+    };
   };
 
-  programs.firefox = { enable = true; };
+  programs.firefox = {
+    enable = true;
+  };
 
   programs.mpv.enable = true;
 
@@ -16,11 +30,19 @@
 
   fonts.fontconfig.enable = true;
 
+  services.wlsunset = {
+    enable = true;
+    latitude = "-22";
+    longitude = "-43";
+  };
+
   home = {
     username = "thiago";
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
     packages = with pkgs; [
+      pavucontrol
+      util-linux
       logseq
       grim
       slurp
@@ -49,8 +71,9 @@
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "dwl";
     };
-
   };
 
-  xdg = { mime.enable = true; };
+  xdg = {
+    mime.enable = true;
+  };
 }

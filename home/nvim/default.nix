@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [ inputs.nixvim.homeManagerModules.nixvim ];
   home.packages = with pkgs; [
     # Bash Scripting:
@@ -10,7 +16,7 @@
     ripgrep
 
     # For nix formatting
-    nixfmt
+    nixfmt-rfc-style
     nixpkgs-fmt
 
     #For LaTeX:
@@ -24,7 +30,6 @@
 
     # For treesitter
     gcc
-
   ];
   programs.nixvim = {
     enable = true;
@@ -50,15 +55,11 @@
       swapfile = false; # Disable the swap file
       undofile = true; # Automatically save and restore undo history
       hlsearch = false;
-      incsearch =
-        true; # Incremental search: show match for partly typed search command
-      inccommand =
-        "split"; # Search and replace: preview changes in quickfix list
-      ignorecase =
-        true; # When the search query is lower-case, match both lower and upper-case
+      incsearch = true; # Incremental search: show match for partly typed search command
+      inccommand = "split"; # Search and replace: preview changes in quickfix list
+      ignorecase = true; # When the search query is lower-case, match both lower and upper-case
       #   patterns
-      smartcase =
-        true; # Override the 'ignorecase' option if the search pattern contains upper
+      smartcase = true; # Override the 'ignorecase' option if the search pattern contains upper
       #   case characters
       scrolloff = 8; # Number of screen lines to show around the cursor
       cursorline = false; # Highlight the screen line of the cursor
@@ -69,26 +70,24 @@
       spell = true; # Highlight spelling mistakes (local to window)
       wrap = false; # Prevent text from wrapping
       # Tab options
-      tabstop =
-        2; # Number of spaces a <Tab> in the text stands for (local to buffer)
-      shiftwidth =
-        2; # Number of spaces used for each step of (auto)indent (local to buffer)
-      expandtab =
-        true; # Expand <Tab> to spaces in Insert mode (local to buffer)
+      tabstop = 2; # Number of spaces a <Tab> in the text stands for (local to buffer)
+      shiftwidth = 2; # Number of spaces used for each step of (auto)indent (local to buffer)
+      expandtab = true; # Expand <Tab> to spaces in Insert mode (local to buffer)
       autoindent = true; # Do clever autoindenting
-      textwidth =
-        0; # Maximum width of text that is being inserted.  A longer line will be
+      textwidth = 0; # Maximum width of text that is being inserted.  A longer line will be
     };
-    autoCmd = [{
-      event = [ "BufWritePost" ];
-      pattern = [ "*.tex" ];
-      callback.__raw = # lua
-        ''
-          function()
-            vim.cmd('VimtexCompile')
-          end
-        '';
-    }];
+    autoCmd = [
+      {
+        event = [ "BufWritePost" ];
+        pattern = [ "*.tex" ];
+        callback.__raw = # lua
+          ''
+            function()
+              vim.cmd('VimtexCompile')
+            end
+          '';
+      }
+    ];
 
     colorschemes.ayu.enable = true;
     plugins = {
@@ -149,8 +148,7 @@
             '';
           };
           snippet = {
-            expand =
-              "function(args) require('luasnip').lsp_expand(args.body) end";
+            expand = "function(args) require('luasnip').lsp_expand(args.body) end";
           };
           sources = [
             { name = "nvim_lsp"; }
@@ -244,9 +242,7 @@
             action = "diagnostics";
             desc = "[F]ind [D]iagnostics";
           };
-
         };
-
       };
       lsp = {
         enable = true;
@@ -297,9 +293,15 @@
         formattersByFt = {
           latex = [ "latexindent" ];
           bibtex = [ "bibtex-tidy" ];
-          nix = [ "nixfmt" "nixpkgs-fmt" ];
+          nix = [
+            "nixfmt"
+            "nixpkgs-fmt"
+          ];
           bash = [ "shfmt" ];
-          "*" = [ "codespell" "trim_whitespace" ];
+          "*" = [
+            "codespell"
+            "trim_whitespace"
+          ];
         };
       };
       lint = {
@@ -308,11 +310,8 @@
           nix = [ "nix" ];
           bash = [ "shellcheck" ];
           latex = [ "chktex" ];
-
         };
-
       };
     };
   };
 }
-

@@ -1,5 +1,10 @@
-{ pkgs, lib, ... }: {
-  home.packages = with pkgs; [ htop bat fd ];
+{ pkgs, lib, ... }:
+{
+  home.packages = with pkgs; [
+    htop
+    bat
+    fd
+  ];
   programs = {
     bash = {
       enable = true;
@@ -9,7 +14,6 @@
         cat = "bat";
         ytfzf = "ytfzf -t";
         steam = "gamescope -W 1920 -H 1080 -e --framerate-limit 65 -- steam";
-
       };
     };
     starship = {
@@ -25,5 +29,4 @@
       enableBashIntegration = true;
     };
   };
-
 }
