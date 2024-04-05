@@ -12,24 +12,24 @@ in
 
   environment.systemPackages = with pkgs; [ pkgs.p2pool ];
 
-  systemd.services.p2pool = {
-    wantedBy = [ "multi-user.target" ];
-    # ./p2pool --host 127.0.0.1 --wallet $my_address --mini --log-level 6
-    after = [ "monero.service" ];
-    description = "Monero p2pool.";
-    serviceConfig = {
-      Type = "simple";
-      User = "monero";
-      ExecStart = "${pkgs.p2pool}/bin/p2pool --host 127.0.0.1 --wallet ${wallet} --mini --loglevel 6";
-      Restart = "always";
-      RestartSec = 5;
-    };
-  };
+  #systemd.services.p2pool = {
+  #  wantedBy = [ "multi-user.target" ];
+  #  # ./p2pool --host 127.0.0.1 --wallet $my_address --mini --log-level 6
+  #  after = [ "monero.service" ];
+  #  description = "Monero p2pool.";
+  #  serviceConfig = {
+  #    Type = "simple";
+  #    User = "monero";
+  #    ExecStart = "${pkgs.p2pool}/bin/p2pool --host 127.0.0.1 --wallet ${wallet} --mini --loglevel 6";
+  #    Restart = "always";
+  #    RestartSec = 5;
+  #  };
+  #};
 
   # ./xmrig -o 127.0.0.1:3333 --randomx-1gb-pages
 
   services.xmrig = {
-    enable = true;
+    enable = false;
     settings = {
       autosave = true;
       background = false;
@@ -65,17 +65,17 @@ in
       ];
     };
   };
-  systemd.services.xmrig = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "p2pool.service" ];
-    serviceConfig = {
-      Type = "simple";
-      User = "root";
-      Restart = "always";
-      RestartSec = 5;
-      DynamicUser = lib.mkForce true;
-    };
-  };
+  #systemd.services.xmrig = {
+  #  wantedBy = [ "multi-user.target" ];
+  #  after = [ "p2pool.service" ];
+  #  serviceConfig = {
+  #    Type = "simple";
+  #    User = "root";
+  #    Restart = "always";
+  #    RestartSec = 5;
+  #    DynamicUser = lib.mkForce true;
+  #  };
+  #};
 
   networking.firewall = {
     allowedUDPPorts = [
