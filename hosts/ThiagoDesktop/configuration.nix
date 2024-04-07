@@ -16,18 +16,30 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/powerManagement
-    ../../modules/monero
+    # ../../modules/monero
     ../../package/slstatus
     ../../package/dwl
     ../../package/scripts/startPolkit.nix
   ];
 
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  services = {
+    gvfs.enable = true;
+    udisks2 = {
+      enable = true;
+      mountOnMedia = true;
+    };
   };
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-media-tags-plugin
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
 
   nixpkgs.hostPlatform = {
     gcc.arch = "znver3";
@@ -54,6 +66,11 @@
       wlr.enable = true;
       xdgOpenUsePortal = true;
       configPackages = with pkgs; [ xdg-desktop-portal-wlr ];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-kde
+        xdg-desktop-portal-hyprland
+      ];
     };
   };
 

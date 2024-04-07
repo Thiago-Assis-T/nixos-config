@@ -22,9 +22,12 @@
     initrd.kernelModules = [ "amdgpu" ];
     kernelModules = [
       "acpi_call"
-      "amd-pstate"
+      # "amd-pstate"
+      "acpi-cpufreq"
       "k10temp"
     ];
+
+    blacklistedKernelModules = [ "amd-pstate" ];
     extraModulePackages = [ pkgs.linuxKernel.packages.linux_zen.acpi_call ];
 
     # For Monero Mining:
@@ -32,7 +35,7 @@
       "vm.nr_hugepages" = 3072;
     };
     kernelParams = [
-      "amd_pstate=active"
+      "amd_pstate=disable"
       "default_hugepagesz=2M"
       "hugepagesz=1G"
       "hugepages=3"

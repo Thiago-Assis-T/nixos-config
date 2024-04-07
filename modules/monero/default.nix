@@ -98,7 +98,7 @@ in
 
   services = {
     monero = {
-      enable = true;
+      enable = false;
       dataDir = "/var/lib/MoneroNode/";
       extraConfig = ''
         prune-blockchain=1

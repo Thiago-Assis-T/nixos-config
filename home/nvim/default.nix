@@ -25,9 +25,6 @@
     texliveFull
     latexrun
 
-    # For code spell checking
-    codespell
-
     # For treesitter
     gcc
   ];
@@ -298,10 +295,7 @@
             "nixpkgs-fmt"
           ];
           bash = [ "shfmt" ];
-          "*" = [
-            "codespell"
-            "trim_whitespace"
-          ];
+          "*" = [ "trim_whitespace" ];
         };
       };
       lint = {

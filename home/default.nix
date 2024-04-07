@@ -16,20 +16,25 @@
   services.gnome-keyring.enable = true;
   xdg = {
     enable = true;
+    portal = {
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-kde
+        xdg-desktop-portal-hyprland
+      ];
+    };
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "text/html" = "firefox.desktop";
-        "x-scheme-handler/http" = "firefox.desktop";
-        "x-scheme-handler/https" = "firefox.desktop";
-        "x-scheme-handler/about" = "firefox.desktop";
-        "x-scheme-handler/unknown" = "firefos.desktop";
+        "text/html" = "floorp.desktop";
+        "x-scheme-handler/http" = "floorp.desktop";
+        "x-scheme-handler/https" = "floorp.desktop";
+        "x-scheme-handler/about" = "floorp.desktop";
+        "x-scheme-handler/unknown" = "floorp.desktop";
       };
     };
-  };
-
-  programs.firefox = {
-    enable = true;
   };
 
   programs.mpv.enable = true;
@@ -50,6 +55,8 @@
     stateVersion = "22.11";
     packages = with pkgs; [
       osu-lazer-bin
+      floorp
+      youtube-music
       pavucontrol
       util-linux
       logseq

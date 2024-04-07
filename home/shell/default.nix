@@ -13,7 +13,6 @@
         htop = "sudo htop";
         cat = "bat";
         ytfzf = "ytfzf -t";
-        steam = "gamescope -W 1920 -H 1080 -e --framerate-limit 65 -- steam";
       };
     };
     starship = {
