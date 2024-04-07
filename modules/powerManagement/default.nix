@@ -12,14 +12,14 @@
       enable = true;
       settings = {
         battery = {
-          governor = "powersave";
+          governor = "performance";
           turbo = "auto";
-          energy_performance_preference = "power";
+          energy_performance_preference = "performance";
         };
         charger = {
-          governor = "powersave";
+          governor = "performance";
           turbo = "auto";
-          energy_performance_preference = "power";
+          energy_performance_preference = "performance";
         };
       };
     };
