@@ -32,13 +32,13 @@
 
     # For Monero Mining:
     kernel.sysctl = {
-      "vm.nr_hugepages" = 3072;
+      #    "vm.nr_hugepages" = 3072;
     };
     kernelParams = [
       "amd_pstate=disable"
-      "default_hugepagesz=2M"
-      "hugepagesz=1G"
-      "hugepages=3"
+      #    "default_hugepagesz=2M"
+      #    "hugepagesz=1G"
+      #    "hugepages=3"
     ];
   };
 }

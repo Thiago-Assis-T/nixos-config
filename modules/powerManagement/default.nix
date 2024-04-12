@@ -5,7 +5,6 @@
   powerManagement = {
     enable = true;
     powertop.enable = false;
-    # cpuFreqGovernor = "performance";
   };
   services = {
     auto-cpufreq = {
