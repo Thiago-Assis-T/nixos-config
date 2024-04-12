@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hosts = {
-      url = "file+http://sbc.io/hosts/alternates/fakenews-gambling-porn/hosts";
+      url = "file+http://sbc.io/hosts/alternates/fakenews-gambling/hosts";
       flake = false;
     };
 

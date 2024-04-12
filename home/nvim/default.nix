@@ -205,39 +205,57 @@
         keymaps = {
           "<leader>?" = {
             action = "oldfiles";
-            desc = "[?] Find recently opened files";
+            options = {
+              desc = "[?] Find recently opened files";
+            };
           };
           "<leader><space>" = {
             action = "buffers";
-            desc = "[ ] Find existing buffers";
+            options = {
+              desc = "[ ] Find existing buffers";
+            };
           };
           "<leader>/" = {
             action = "current_buffer_fuzzy_find";
-            desc = "[/] Fuzzily search in current buffer";
+            options = {
+              desc = "[/] Fuzzily search in current buffer";
+            };
           };
           "<leader>ft" = {
             action = "git_files";
-            desc = "[F]ind gi[T]";
+            options = {
+              desc = "[F]ind gi[T]";
+            };
           };
           "<leader>ff" = {
             action = "find_files";
-            desc = "[F]ind [F]files";
+            options = {
+              desc = "[F]ind [F]files";
+            };
           };
           "<leader>fh" = {
             action = "help_tags";
-            desc = "[F]ind [H]elp";
+            options = {
+              desc = "[F]ind [H]elp";
+            };
           };
           "<leader>fw" = {
             action = "grep_string";
-            desc = "[F]ind [W]ord";
+            options = {
+              desc = "[F]ind [W]ord";
+            };
           };
           "<leader>fg" = {
             action = "live_grep";
-            desc = "[F]ind [G]rep";
+            options = {
+              desc = "[F]ind [G]rep";
+            };
           };
           "<leader>fd" = {
             action = "diagnostics";
-            desc = "[F]ind [D]iagnostics";
+            options = {
+              desc = "[F]ind [D]iagnostics";
+            };
           };
         };
       };

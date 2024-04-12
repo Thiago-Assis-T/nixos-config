@@ -59,7 +59,7 @@
       youtube-music
       pavucontrol
       util-linux
-      logseq
+      #logseq
       grim
       slurp
       exercism

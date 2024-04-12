@@ -68,7 +68,7 @@
       configPackages = with pkgs; [ xdg-desktop-portal-wlr ];
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
-        xdg-desktop-portal-kde
+        #xdg-desktop-portal-kde
         xdg-desktop-portal-hyprland
       ];
     };
