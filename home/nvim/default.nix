@@ -35,6 +35,7 @@
     vimAlias = true;
     extraConfigLua = ''
       vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#0f1419", ctermbg = "none" })
+      vim.g.have_nerd_font = true;
     '';
     clipboard = {
       # Use system clipboard
