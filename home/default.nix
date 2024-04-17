@@ -12,6 +12,7 @@
     ./git
     ./nvim
     ./tmux
+    ./theming
   ];
   services.gnome-keyring.enable = true;
   xdg = {
