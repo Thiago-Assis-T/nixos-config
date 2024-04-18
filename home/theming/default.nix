@@ -1,11 +1,8 @@
 { config, pkgs, ... }:
 {
-
   gtk = {
     enable = true;
-    iconTheme = {
-      name = "Solarc";
-      package = "pkgs.solarc-gtk-theme";
-    };
+    theme.package = pkgs.arc-theme;
+    theme.name = "Arc-Dark";
   };
 }
