@@ -2,7 +2,7 @@
 {
   gtk = {
     enable = true;
-    theme.package = pkgs.arc-theme;
-    theme.name = "Arc-Dark";
+    theme.package = pkgs.solarc-gtk-theme;
+    theme.name = "SolArc-Dark";
   };
 }

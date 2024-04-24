@@ -13,6 +13,7 @@
     ./nvim
     ./tmux
     ./theming
+    # TODO: Fix the theme...
   ];
   services.gnome-keyring.enable = true;
   xdg = {

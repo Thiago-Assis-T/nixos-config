@@ -87,7 +87,10 @@
       }
     ];
 
-    colorschemes.ayu.enable = true;
+    colorschemes.base16 = {
+      enable = true;
+      colorscheme = "solarized-dark";
+    };
     plugins = {
       vimtex = {
         enable = true;
@@ -96,6 +99,7 @@
           view_method = "zathura";
         };
       };
+      nvim-colorizer.enable = true;
       transparent.enable = true;
       noice.enable = true;
       trouble.enable = true;
@@ -117,7 +121,9 @@
       };
       treesitter-context = {
         enable = true;
-        lineNumbers = true;
+        settings = {
+          line_numbers = true;
+        };
       };
       treesitter-refactor = {
         enable = true;
@@ -135,15 +141,16 @@
         enable = true;
         settings = {
           mapping = {
-            __raw = ''
-              cmp.mapping.preset.insert({
-                ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                ["<C-Space>"] = cmp.mapping.complete(),
-                ["<C-e>"] = cmp.mapping.abort(),
-                ["<C-Space>"] = cmp.mapping.confirm({ select = true }),
-              })
-            '';
+            __raw = # lua
+              ''
+                cmp.mapping.preset.insert({
+                  ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                  ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                  ["<C-Space>"] = cmp.mapping.complete(),
+                  ["<C-e>"] = cmp.mapping.abort(),
+                  ["<C-Space>"] = cmp.mapping.confirm({ select = true }),
+                })
+              '';
           };
           snippet = {
             expand = "function(args) require('luasnip').lsp_expand(args.body) end";

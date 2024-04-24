@@ -22,6 +22,7 @@
     initrd.kernelModules = [ "amdgpu" ];
     kernelModules = [
       "acpi_call"
+      "amdgpu"
       # "amd-pstate"
       "acpi-cpufreq"
       "k10temp"

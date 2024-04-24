@@ -25,6 +25,13 @@
   programs.dconf.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  programs.steam = {
+    enable = true;
+    gamescopeSession = {
+      enable = true;
+    };
+    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+  };
   services = {
     gvfs.enable = true;
     udisks2 = {
