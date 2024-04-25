@@ -163,46 +163,47 @@
             { name = "treesitter"; }
           ];
           formatting = {
-            format = ''
-              function(entry, vim_item)
-                local icons = {
-                  Text = "󰈚",
-                  Method = "",
-                  Function = "󰊕",
-                  Constructor = "󱌣",
-                  Field = "󰽐",
-                  Variable = "",
-                  Class = "",
-                  Interface = "",
-                  Module = "󰕳",
-                  Property = "",
-                  Unit = "󱍓",
-                  Value = "󰎠",
-                  Enum = "",
-                  Keyword = "",
-                  Snippet = "",
-                  Color = "",
-                  File = "󰈙",
-                  Reference = "",
-                  Folder = "",
-                  EnumMember = "",
-                  Constant = "",
-                  Struct = "",
-                  Event = "",
-                  Operator = "",
-                  TypeParameter = "󰉺",
-                }
-                vim_item.kind = string.format("%s", icons[vim_item.kind])
-                vim_item.menu = ({
-                  nvim_lsp = "[LSP]",
-                  treesitter = "[Treesitter]",
-                  luasnip = "[Snippet]",
-                  fuzzy_buffer = "[Buffer]",
-                  fuzzy_path = "[Path]",
-                })[entry.source.name]
-                return vim_item
-              end,
-            '';
+            format = # lua
+              ''
+                function(entry, vim_item)
+                  local icons = {
+                    Text = "󰈚",
+                    Method = "",
+                    Function = "󰊕",
+                    Constructor = "󱌣",
+                    Field = "󰽐",
+                    Variable = "",
+                    Class = "",
+                    Interface = "",
+                    Module = "󰕳",
+                    Property = "",
+                    Unit = "󱍓",
+                    Value = "󰎠",
+                    Enum = "",
+                    Keyword = "",
+                    Snippet = "",
+                    Color = "",
+                    File = "󰈙",
+                    Reference = "",
+                    Folder = "",
+                    EnumMember = "",
+                    Constant = "",
+                    Struct = "",
+                    Event = "",
+                    Operator = "",
+                    TypeParameter = "󰉺",
+                  }
+                  vim_item.kind = string.format("%s", icons[vim_item.kind])
+                  vim_item.menu = ({
+                    nvim_lsp = "[LSP]",
+                    treesitter = "[Treesitter]",
+                    luasnip = "[Snippet]",
+                    fuzzy_buffer = "[Buffer]",
+                    fuzzy_path = "[Path]",
+                  })[entry.source.name]
+                  return vim_item
+                end,
+              '';
           };
         };
       };
@@ -269,38 +270,40 @@
       };
       lsp = {
         enable = true;
-        capabilities = ''
-          vim.lsp.protocol.make_client_capabilities()
-        '';
-        onAttach = ''
-          function attach(_, bufnr)
-          	local nmap = function(keys, func, desc)
-          		if desc then
-          			desc = "LSP: " .. desc
-          		end
-          		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-          	end
+        capabilities = # lua
+          ''
+            vim.lsp.protocol.make_client_capabilities()
+          '';
+        onAttach = # lua
+          ''
+            function attach(_, bufnr)
+            	local nmap = function(keys, func, desc)
+            		if desc then
+            			desc = "LSP: " .. desc
+            		end
+            		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+            	end
 
-          	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-          	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-          	nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-          	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-          	nmap("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-          	nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-          	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]symbols")
-          	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]symbols")
+            	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+            	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+            	nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+            	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+            	nmap("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+            	nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+            	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]symbols")
+            	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]symbols")
 
-          	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-          	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+            	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+            	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
-          	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-          	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-          	nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-          	nmap("<leader>wl", function()
-          		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-          	end, "[W]orkspace [L]ist Folders")
-          end
-        '';
+            	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+            	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
+            	nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
+            	nmap("<leader>wl", function()
+            		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+            	end, "[W]orkspace [L]ist Folders")
+            end
+          '';
         servers = {
           nixd.enable = true;
           bashls.enable = true;
