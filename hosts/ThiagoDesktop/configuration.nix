@@ -2,14 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{
-  config,
-  lib,
-  pkgs,
-  hosts,
-  dwl-src,
-  ...
-}:
+{ pkgs, hosts, ... }:
 
 {
   imports = [
@@ -25,12 +18,21 @@
   programs.dconf.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  #programs.hyprland.enable = true;
+  #programs.hyprland.xwayland.enable = true;
   programs.steam = {
     enable = true;
-    gamescopeSession = {
-      enable = true;
-    };
+    gamescopeSession.enable = true;
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
+  };
+
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+  programs.gamemode = {
+    enable = true;
+    enableRenice = true;
   };
   services = {
     gvfs.enable = true;
@@ -63,7 +65,7 @@
   boot.loader.systemd-boot.memtest86.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
   security.polkit.enable = true;
-  environment.systemPackages = with pkgs; [ ];
+  #environment.systemPackages = with pkgs; [ ];
   services.gnome.gnome-keyring.enable = true;
   services.seatd.enable = true;
   xdg = {
@@ -87,8 +89,6 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    extraPackages = [ pkgs.amdvlk ];
-    extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
   nix.settings.experimental-features = [

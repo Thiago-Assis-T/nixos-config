@@ -1,9 +1,4 @@
-{
-  pkgs,
-  inputs,
-  config,
-  ...
-}:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -56,6 +51,7 @@
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
     packages = with pkgs; [
+      freecad
       osu-lazer-bin
       floorp
       youtube-music
@@ -74,13 +70,13 @@
       lm_sensors
       btop
       youtube-tui
-      neofetch
+      fastfetch
       wbg
       dmenu-wayland
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = 1;
-      DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+      DEFAULT_BROWSER = "${pkgs.floorp}/bin/floorp";
       MOZ_ENABLE_WAYLAND = 1;
       GDK_BACKEND = "wayland,x11";
       QT_QPA_PLATFORM = "wayland-egl";
