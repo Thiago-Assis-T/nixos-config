@@ -9,7 +9,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/powerManagement
-    # ../../modules/monero
+    ../../modules/gaming
     ../../package/slstatus
     ../../package/dwl
     ../../package/scripts/startPolkit.nix
@@ -18,22 +18,6 @@
   programs.dconf.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  #programs.hyprland.enable = true;
-  #programs.hyprland.xwayland.enable = true;
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
-    extraCompatPackages = with pkgs; [ proton-ge-bin ];
-  };
-
-  programs.gamescope = {
-    enable = true;
-    capSysNice = true;
-  };
-  programs.gamemode = {
-    enable = true;
-    enableRenice = true;
-  };
   services = {
     gvfs.enable = true;
     udisks2 = {
@@ -76,11 +60,7 @@
       wlr.enable = true;
       xdgOpenUsePortal = true;
       configPackages = with pkgs; [ xdg-desktop-portal-wlr ];
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        #xdg-desktop-portal-kde
-        xdg-desktop-portal-hyprland
-      ];
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
     };
   };
 
@@ -114,7 +94,7 @@
     };
   };
 
-  networking.hostName = "ThiagoDesktop"; # Define your hostname.
+  networking.hostName = "ThiagoDesktop";
   networking.hostFiles = [ hosts ];
   networking.networkmanager = {
     enable = true;
@@ -152,10 +132,9 @@
       "seat"
       "wheel"
       "audio"
-    ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ ];
+    ];
   };
 
   networking.firewall.enable = true;
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.11";
 }

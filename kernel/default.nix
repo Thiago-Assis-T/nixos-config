@@ -1,12 +1,5 @@
+{ pkgs }:
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-{
-
-  #imports = [ ./hardening.nix ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
@@ -21,25 +14,12 @@
     ];
     initrd.kernelModules = [ "amdgpu" ];
     kernelModules = [
-      "acpi_call"
       "amdgpu"
-      # "amd-pstate"
+      "amd-pstate"
       "acpi-cpufreq"
       "k10temp"
     ];
 
-    blacklistedKernelModules = [ "amd-pstate" ];
-    extraModulePackages = [ pkgs.linuxKernel.packages.linux_zen.acpi_call ];
-
-    # For Monero Mining:
-    kernel.sysctl = {
-      #    "vm.nr_hugepages" = 3072;
-    };
-    kernelParams = [
-      "amd_pstate=disable"
-      #    "default_hugepagesz=2M"
-      #    "hugepagesz=1G"
-      #    "hugepages=3"
-    ];
+    kernelParams = [ "amd_pstate=enable" ];
   };
 }

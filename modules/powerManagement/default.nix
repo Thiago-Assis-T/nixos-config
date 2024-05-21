@@ -1,14 +1,14 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
 
-  environment.systemPackages = with pkgs; [ ];
+  #environment.systemPackages = with pkgs; [ ];
   powerManagement = {
-    enable = true;
+    enable = false;
     powertop.enable = false;
   };
   services = {
     auto-cpufreq = {
-      enable = true;
+      enable = false;
       settings = {
         battery = {
           governor = "performance";
@@ -24,7 +24,7 @@
     };
     power-profiles-daemon.enable = false;
     system76-scheduler = {
-      enable = true;
+      enable = false;
       useStockConfig = true;
     };
   };

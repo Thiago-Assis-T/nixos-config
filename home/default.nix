@@ -51,6 +51,7 @@
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
     packages = with pkgs; [
+      tree
       freecad
       osu-lazer-bin
       floorp

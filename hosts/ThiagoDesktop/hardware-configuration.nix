@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -12,7 +11,6 @@
 {
   imports = [
     ../../kernel
-    ./gigabyteMoBo.nix
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
@@ -49,10 +47,6 @@
       device = "/dev/disk/by-uuid/12CE-A600";
       fsType = "vfat";
     };
-    #"/var/lib/MoneroNode" = {
-    #  device = "/dev/disk/by-uuid/6dc6e2c5-720a-44d4-84c0-2cf9b2ecdffb";
-    #  fsType = "ext4";
-    #};
   };
 
   swapDevices = [ ];
