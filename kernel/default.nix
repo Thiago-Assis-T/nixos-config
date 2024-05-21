@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 {
 
   boot = {
@@ -16,7 +16,6 @@
     kernelModules = [
       "amdgpu"
       "amd-pstate"
-      "acpi-cpufreq"
       "k10temp"
     ];
 

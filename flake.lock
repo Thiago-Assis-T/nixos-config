@@ -304,11 +304,11 @@
     "slstatus-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1712962713,
-        "narHash": "sha256-VDQ6dS68lv1BiQ1ugO9d1J974UYqA1lK+X1fItsJ35E=",
+        "lastModified": 1716314834,
+        "narHash": "sha256-AllWbCb1VIsusQi4Bf/jDNERSZBGwZp/tmJKR3d1e8A=",
         "ref": "refs/heads/main",
-        "rev": "89bf6dd549e4dae5933dc4dc540fd92297735f36",
-        "revCount": 26,
+        "rev": "d081a8b984efcbee030be8a5654beaff5198ddcc",
+        "revCount": 29,
         "type": "git",
         "url": "https://codeberg.org/ThiagoAssis/slstatus.git"
       },

@@ -49,9 +49,17 @@
   boot.loader.systemd-boot.memtest86.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
   security.polkit.enable = true;
-  #environment.systemPackages = with pkgs; [ ];
   services.gnome.gnome-keyring.enable = true;
   services.seatd.enable = true;
+  sound = {
+    enable = true;
+    enableOSSEmulation = true;
+    mediaKeys = {
+      enable = true;
+      volumeStep = "1%";
+    };
+  };
+
   xdg = {
     autostart.enable = true;
     sounds.enable = true;
@@ -83,7 +91,6 @@
     fileSystems = [ "/" ];
   };
 
-  sound.enable = true;
   services.pipewire = {
     enable = true;
     audio.enable = true;
