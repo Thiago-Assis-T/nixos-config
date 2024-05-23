@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { pkgs, hosts, ... }:
 
 {
@@ -48,6 +44,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.memtest86.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
+
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   services.seatd.enable = true;

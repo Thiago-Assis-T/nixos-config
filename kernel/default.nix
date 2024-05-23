@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     initrd.availableKernelModules = [
@@ -18,7 +17,6 @@
       "amd-pstate"
       "k10temp"
     ];
-
     kernelParams = [ "amd_pstate=enable" ];
   };
 }

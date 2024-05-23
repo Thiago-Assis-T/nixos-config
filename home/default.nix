@@ -30,6 +30,7 @@
         "x-scheme-handler/https" = "floorp.desktop";
         "x-scheme-handler/about" = "floorp.desktop";
         "x-scheme-handler/unknown" = "floorp.desktop";
+        "x-scheme-handler/magnet" = "transmission-gtk.desktop";
       };
     };
   };
@@ -51,6 +52,8 @@
     homeDirectory = "/home/thiago";
     stateVersion = "22.11";
     packages = with pkgs; [
+      popsicle
+      filezilla
       tree
       freecad
       osu-lazer-bin

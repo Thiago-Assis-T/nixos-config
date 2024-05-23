@@ -72,7 +72,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit inputs system pkgs;
+                  inherit inputs pkgs;
                 };
                 users.thiago = import ./home;
               };

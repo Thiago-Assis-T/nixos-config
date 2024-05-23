@@ -1,9 +1,10 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     htop
     bat
     fd
+    btop
   ];
   programs = {
     bash = {
@@ -11,8 +12,8 @@
       enableCompletion = true;
       shellAliases = {
         htop = "sudo htop";
+        btop = "sudo btop";
         cat = "bat";
-        ytfzf = "ytfzf -t";
       };
     };
     starship = {
